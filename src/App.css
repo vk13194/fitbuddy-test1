@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Font_I_bold;
+  src: url("./pages/styles/fonts/PublicaSans-UltraLight.otf");
+}
+
+@font-face {
+  font-family: Font_I_thin;
+  src: url("./pages/styles/fonts/PublicaSans-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: Font_I_Xthin;
+  src: url("./pages/styles/fonts/PublicaSans-ThinItalic.otf");
+}
+
+@font-face {
+  font-family: Font_medium;
+  src: url("./pages/styles/fonts/PublicaSans-Medium.otf");
+}
+
+@font-face {
+  font-family: Font_smedium;
+  src: url("./pages/styles/fonts/ZPublicaSans.otf");
+}
+
+@font-face {
+  font-family: Font_bold;
+  src: url("./pages/styles/fonts/PublicaSans-Bold.otf");
+}
+
+@font-face {
+  font-family: Font_italic;
+  src: url("./pages/styles/fonts/PublicaSans-BlackItalic.otf");
+}
+
+@font-face {
+  font-family: Font_light;
+  src: url("./pages/styles/fonts/PublicaSans-Light.otf");
+}
+
+@font-face {
+  font-family: Font_I_regular;
+  src: url("./pages/styles/fonts/PublicaSans-Italic.otf");
+}
+
+.PrivateTabIndicator-colorSecondary-5 {
+  background-color: #a3bb33 !important;
+}
+.MuiPaper-elevation4 {
+  /* box-shadow: none !important; */
+}
+.MuiTabs-flexContainer {
+  justify-content: space-between;
+}
+.App {
+  text-align: center;
+}

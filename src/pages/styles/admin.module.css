@@ -1,0 +1,90 @@
+.btn_ctr {
+  display: flex;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 1rem auto;
+}
+.btn_ctr {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.btn_ctr button {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #4a4a4a;
+  transition: all ease 0.4s;
+}
+.btn_ctr button:hover {
+  background-color: #dddddd;
+  color: #464040;
+}
+
+.data {
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  cursor: unset;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.table_r1 th {
+  font-weight: 600;
+  padding: 0.8rem;
+}
+td button {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #13a89e;
+  border: 2px solid #13a89e;
+  transition: all ease 0.4s;
+}
+td button:hover {
+  background-color: #13a89e;
+  color: white;
+}
+.users {
+  background-color: #39b54a;
+  color: #ffffff !important;
+}
+.users:hover {
+  background-color: #30963d !important;
+}
+.options {
+  display: flex;
+  align-items: center;
+}
+
+.del_ssn {
+  margin: auto;
+  font-size: 2rem;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+.del_ssn:hover {
+  color: black;
+}
+.cpybtn {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

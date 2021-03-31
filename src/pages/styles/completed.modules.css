@@ -1,0 +1,10 @@
+th,td {
+  font-family: "Roboto Condensed", sans-serif;  
+}
+table {
+  margin: 2rem auto;
+  width: 95%;
+}
+td {
+  cursor: pointer;
+}

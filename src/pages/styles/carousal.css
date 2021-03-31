@@ -1,0 +1,28 @@
+.carousel-dots {
+  position: absolute !important;
+  bottom: 2% !important;
+  z-index: 9 !important;
+}
+.carousel-dots li.carousel-dots-active button::before {
+  color: #96c93d;
+}
+.carousel-dots li button::before {
+  color: white;
+  opacity: 0.5;
+}
+.guuruq {
+  border: 2px solid wheat !important;
+}
+.bkVSTc {
+  margin-top: 6rem !important;
+}
+@media (max-height: 860px) {
+  .carousel-dots {
+    bottom: 3% !important;
+  }
+}
+@media (max-height: 810px) {
+  .bkVSTc {
+    margin-top: 5rem;
+  }
+}

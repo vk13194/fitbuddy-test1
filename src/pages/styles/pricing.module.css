@@ -1,0 +1,200 @@
+.main {
+  margin: 2rem auto 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.main table {
+  width: 100%;
+  margin: 0;
+  margin-top: 2rem;
+}
+.add_btn,
+.inp button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: 2px solid #4aa44a !important;
+  font-size: 1rem;
+  align-self: flex-start;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.add_btn:hover,
+.inp button:hover {
+  opacity: 1 !important;
+  background-color: white;
+  box-shadow: 2px 2px 16px #4aa44a49;
+}
+.name_ctr {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.edit {
+  position: absolute;
+  right: 1%;
+  align-self: flex-end !important;
+  width: max-content;
+}
+.edit:hover {
+  fill: red;
+}
+.create_ssn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.438);
+  width: 100vw;
+  height: 100%;
+}
+.inp {
+  margin-top: 3rem;
+  position: absolute;
+  align-self: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inp button:hover {
+  opacity: 0.7;
+}
+.btn_ctr {
+  display: flex;
+}
+.btn_ctr button {
+  margin-right: 2rem;
+}
+.new_pack {
+  margin-bottom: 1rem;
+}
+.inp {
+  display: flex;
+  flex-direction: column;
+  width: 18rem !important;
+  align-items: center;
+}
+.inp input {
+  align-self: center;
+  width: 16rem;
+  border-radius: 8px;
+  border: 2px solid #4a4a4a;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+.inp div {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+.inp button {
+  border: 2px solid #4a4a4a !important;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  align-self: center !important;
+}
+.inp button:hover {
+  background-color: white !important;
+}
+.sessions_heading {
+  position: relative;
+}
+.del {
+  position: absolute;
+  right: 4%;
+  cursor: pointer;
+}
+.edit2:hover,
+.del:hover {
+  fill: red;
+}
+.confirm {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.294);
+  display: flex;
+  justify-content: center;
+}
+.confirm_text {
+  color: white;
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  top: 2%;
+  text-shadow: 2px 2px solid white;
+}
+.confirm span {
+  top: 16%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 8rem;
+  text-align: center;
+  align-self: center;
+  margin: 0 auto;
+  z-index: 9;
+}
+.confirm span button {
+  margin-right: 0;
+  font-size: 1.5rem;
+  background-color: white !important;
+  color: black;
+  padding: 0.4rem 0.8rem;
+}
+.confirm_yes:hover {
+  background-color: rgb(253, 34, 34) !important;
+  color: white;
+}
+.confirm_no:hover {
+  opacity: 0.8;
+}
+.new_pack_ssns {
+  width: max-content !important;
+}
+.edit_btn_ctr {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  width: 16rem !important;
+}
+#edit_btn_exit {
+  color: #ffffff !important;
+  background: none !important;
+  border: 2px solid #ffffff !important;
+}
+#edit_btn_exit:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.329) !important;
+  border: 2px solid white !important;
+}
+.thumb_ctr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-content: center;
+}
+.inp_edit_thumb,
+.btn_edit_thumb {
+}
+.inp_edit_thumb,
+.btn_edit_thumb {
+  font-size: 1.4rem;
+}
+.thumb_edit_div {
+  z-index: 99;
+  left: 0;
+  right: 0;
+  margin: 4rem auto;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}

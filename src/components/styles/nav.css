@@ -1,0 +1,29 @@
+nav {
+  height: 5rem;
+  box-shadow: 2px 2px 18px rgb(217, 218, 217);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav img {
+  margin-left: 4rem;
+  height: 70%;
+}
+nav button {
+  margin-right: 4rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  background-color: transparent;
+  transition: all ease 0.4s;
+  text-shadow: 2px 2px 18px rgb(218, 217, 217);
+  outline: none;
+}
+nav button:hover {
+  text-shadow: none;
+  box-shadow: 2px 2px 18px rgb(218, 217, 217);
+}
