@@ -37,7 +37,6 @@ import home from "./styles/home.module.css";
 // import location from "/assets/location.png";
 var loginEmail='';
 var loginPassword='';
-
 function FadeInWhenVisible({ children }) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
@@ -98,21 +97,33 @@ function VideoCtr() {
   );
 }
 // New Function by Amber
+/*  function checkIfLoggedIn()
+  {
+    console.log("Null");
+    var item=localStorage.getItem("token");
+  if(item!=null) 
+  {
+    var role=JSON.parse(atob(item.split(".")[1])).role;
+    if(role == "customer")
+    {
+      document.getElementById("redirectToUserProfileButton").click();
+    }
+    else if(role == "trainer")
+    {
+      document.getElementById("redirectToTrainerProfileButton").click();
+    }
+  }
+  }
+*/
 function checkStatus(data){
+  console.log("check status");
   if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
-  else if(data.success == false) alert(data.error);
-}
-function checkForAuthenticity(event){
- fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
-    method: "POST",
-    headers: {
-      "Content-type": "application/json" 
-    },
-    body : JSON.stringify({
-      "email" : loginEmail.trim(),
-      "password" : loginPassword.trim()
-    })
-  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+  else if(data.success == false) 
+  {
+    alert(data.error);
+  }
+  if(data.success==null)
+  {
   console.log(localStorage.getItem("token"));
   console.log(loginEmail);
   var payload=localStorage.getItem("token").split(".")[1];
@@ -128,10 +139,24 @@ function checkForAuthenticity(event){
     document.getElementById("redirectToTrainerProfileButton").click();
   }
 }
+}
+function checkForAuthenticity(event){
+fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
+    method: "POST",
+    headers: {
+      "Content-type": "application/json" 
+    },
+    body : JSON.stringify({
+      "email" : loginEmail.trim(),
+      "password" : loginPassword.trim()
+    })
+  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+}
 
 export default function Home() {
   let history = useHistory();
-  function CONTAINER_STYLE() {
+  
+    function CONTAINER_STYLE() {
     return {
       position: "relative",
       width: "100%",

@@ -1,6 +1,7 @@
 import "./App.css";
 import Admin_panel from "./pages/Admin_panel";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import Home from "./pages/Home";
 import Sessions_completed from "./pages/Sessions_completed";
 import Session_details from "./pages/Session_details";
@@ -14,11 +15,34 @@ import Trainer_details from "./pages/Trainer_details";
 import User_details from "./pages/User_details";
 
 function App() {
+  //Under construction
+  const history=useHistory();
+  localStorage.removeItem("token");
+  var item=localStorage.getItem("token");
+  let loggedIn=false;
+  let url="/";
+  let hcomponent="Home";
+  if(item!=null) 
+  {
+    loggedIn=true;
+    var role=JSON.parse(atob(item.split(".")[1])).role;
+    if(role == "customer")
+    {
+      url="/user/profile"
+      hcomponent=User_profile;
+    }
+    else if(role == "trainer")
+    {
+      url="/trainer/profile";
+      hcomponent=Trainer_profile;
+    }
+  }
+
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home}></Route>
           <Route exact path="/admin_panel" component={Admin_panel} />
           <Route
             exact
