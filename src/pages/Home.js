@@ -35,6 +35,8 @@ import { FiSend, FiMenu } from "react-icons/fi";
 import "./styles/carousal.css";
 import home from "./styles/home.module.css";
 // import location from "/assets/location.png";
+var loginEmail='';
+var loginPassword='';
 
 function FadeInWhenVisible({ children }) {
   const controls = useAnimation();
@@ -94,6 +96,37 @@ function VideoCtr() {
       </div>
     </div>
   );
+}
+// New Function by Amber
+function checkStatus(data){
+  if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
+  else if(data.success == false) alert(data.error);
+}
+function checkForAuthenticity(event){
+ fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
+    method: "POST",
+    headers: {
+      "Content-type": "application/json" 
+    },
+    body : JSON.stringify({
+      "email" : loginEmail.trim(),
+      "password" : loginPassword.trim()
+    })
+  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+  console.log(localStorage.getItem("token"));
+  console.log(loginEmail);
+  var payload=localStorage.getItem("token").split(".")[1];
+  var decoded=atob(payload);
+  var result=JSON.parse(decoded);
+  console.log(result+".."+result.role);
+  if(result.role == "customer")
+  {
+    document.getElementById("redirectToUserProfileButton").click();
+  }
+  else if(result.role == "trainer")
+  {
+    document.getElementById("redirectToTrainerProfileButton").click();
+  }
 }
 
 export default function Home() {
@@ -438,14 +471,16 @@ export default function Home() {
           <div className={home.trial_ctr}>
             <p>7 DAYS FREE TRIAL</p>
             <div className={home.trial_inp}>
-              <FaRegUserCircle color="grey" />
-              <input type="text" placeholder="Full Name" />
+              <AiOutlineMessage color="grey" />
+              <input onChange={(event)=> {loginEmail =(event.target.value)}} type="text" placeholder="Email or Mobile number" />
             </div>
             <div className={home.trial_inp}>
-              <AiOutlineMessage color="grey" />
-              <input type="text" placeholder="Email or mobile number" />
+              <FaRegUserCircle color="grey" />
+             <input onChange={(event)=> {loginPassword=(event.target.value)}} type="password" placeholder="Password" required/>
             </div>
-            <button className={home.trial_login}>Signup</button>
+            <button onClick={(event) =>{checkForAuthenticity(event)}} className={home.trial_login}>Login</button>
+            <Link to="/user/profile"><button id="redirectToUserProfileButton" hidden="true"></button></Link>
+            <Link to="/trainer/profile"><button id="redirectToTrainerProfileButton" hidden="true"></button></Link>
             <div className={home.line_ctr}>
               <p>or login with</p>
             </div>
