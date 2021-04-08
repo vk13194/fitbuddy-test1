@@ -16,29 +16,9 @@ import User_details from "./pages/User_details";
 
 function App() {
   //Under construction
-  const history=useHistory();
-  localStorage.removeItem("token");
-  var item=localStorage.getItem("token");
-  let loggedIn=false;
-  let url="/";
-  let hcomponent="Home";
-  if(item!=null) 
-  {
-    loggedIn=true;
-    var role=JSON.parse(atob(item.split(".")[1])).role;
-    if(role == "customer")
-    {
-      url="/user/profile"
-      hcomponent=User_profile;
-    }
-    else if(role == "trainer")
-    {
-      url="/trainer/profile";
-      hcomponent=Trainer_profile;
-    }
-  }
-
-  return (
+  //localStorage.removeItem("token");
+ 
+ return (
     <div className="App">
       <Router>
         <Switch>

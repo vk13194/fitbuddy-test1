@@ -155,7 +155,21 @@ fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
 
 export default function Home() {
   let history = useHistory();
-  
+  var token=localStorage.getItem("token");
+  console.log(token);
+  if(token!=null) 
+  {
+    var role=JSON.parse(atob(token.split(".")[1])).role;
+    if(role == "customer")
+    {
+      history.replace("/user/profile");
+    }
+    else if(role == "trainer")
+    {
+      history.replace("/trainer/profile");
+    }
+  }
+
     function CONTAINER_STYLE() {
     return {
       position: "relative",

@@ -13,6 +13,8 @@ import {
 import { FaFacebook } from "react-icons/fa";
 
 export default function Signup() {
+  let email;
+  let password;
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
   const [drpdown, setdrpdown] = useState("indivisual or company");
@@ -20,6 +22,8 @@ export default function Signup() {
 
   const nextStep = (event) => {
     event.preventDefault();
+    localStorage.setItem("email",email);
+    localStorage.setItem("password",password);
     istrainer ? history.push("/signup/trainer") : history.push("/signup/user");
   };
   const onMenuClick = (event) => {
@@ -66,6 +70,7 @@ export default function Signup() {
           <div className="input_ctr">
             <BsChatSquareDots color="#4a4a4a" />
             <input
+              onChange={(event)=> {email=(event.target.value)}}
               type="email"
               placeholder="Email or mobile number"
               required
@@ -73,7 +78,7 @@ export default function Signup() {
           </div>
           <div className="input_ctr">
             <RiLockPasswordLine color="#4a4a4a" />
-            <input type="password" placeholder="password" required></input>
+            <input onChange={(event)=> {password=(event.target.value)}} type="password" placeholder="password" required></input>
           </div>
           <form onChange={(event) => typeChangeHandler(event)}>
             <p>Register yourself as:</p>

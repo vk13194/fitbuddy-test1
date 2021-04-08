@@ -46,7 +46,7 @@ const TextInputs = styled.div`
     border-radius: 3rem;
     transition: all ease 0.2s;
   }
-  .gender:hover {
+  .gender_unselected:hover {
     box-shadow: 2px 2px 8px grey;
   }
   .gender:active {
@@ -62,6 +62,42 @@ const TextInputs = styled.div`
       rgba(83, 94, 25, 1) 98%
     );
     box-shadow: 2px 2px 4px grey;
+  }
+  .gender_selected{
+    font-family: Font_medium;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    padding: 0.4rem 1.5rem;
+    outline: none;
+    border-radius: 3rem;
+    transition: all ease 0.2s;
+
+
+    border: 2px transparent;
+    color: white;
+    background: rgb(162, 185, 51);
+    background: linear-gradient(
+      180deg,
+      rgba(162, 185, 51, 1) 67%,
+      rgba(83, 94, 25, 1) 98%
+    );
+    box-shadow: 2px 2px 4px grey;
+  }
+  .gender_unselected{
+    font-family: Font_medium;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 0 2px #a3a3a3;
+    background-color: transparent;
+    color: #a3a3a3;
+    padding: 0.4rem 1.5rem;
+    outline: none;
+    border-radius: 3rem;
+    transition: all ease 0.2s;
+
   }
   .details input {
     outline: none;
