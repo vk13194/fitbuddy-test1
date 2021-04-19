@@ -23,7 +23,7 @@ export default function Session_card({
 
         <div className={card.ctr1}>
           <div>
-            <p className={card.label}>{label}</p>
+            <p className={card.exercise_label}>{label}</p>
             <p className={card.desc}>{description}</p>
             <button>READ MORE</button>
           </div>

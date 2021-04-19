@@ -19,19 +19,37 @@ export default function Signup() {
   const [istrainer, settrainer] = useState(false);
   const [drpdown, setdrpdown] = useState("indivisual or company");
   const [rendermenu, setrendermenu] = useState(false);
-
+  const getStatus=(data)=>{
+    if(data.token!=null) localStorage.setItem("token",data.token);
+    if(localStorage.getItem("token")!=null) history.replace("/user/profile");
+    else
+    {
+      istrainer ? history.push("/signup/trainer") : history.push("/signup/user");
+    }
+  }
   const nextStep = (event) => {
     event.preventDefault();
     localStorage.setItem("email",email);
     localStorage.setItem("password",password);
-    istrainer ? history.push("/signup/trainer") : history.push("/signup/user");
+    //Call to login for checking if user exist
+    fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
+    method: "POST",
+    headers: {
+      "Content-type": "application/json" 
+    },
+    body : JSON.stringify({
+      "email" : email,
+      "password" : password
+    })
+  }).then((res)=>res.json()).then((data)=>getStatus(data));
   };
   const onMenuClick = (event) => {
     setdrpdown(event.target.innerText);
     setrendermenu(!rendermenu);
   };
   const typeChangeHandler = (event) => {
-    event.target.value === "trainer" ? settrainer(true) : settrainer(false);
+    console.log(event.target.value);
+    event.target.value == "trainer" ? settrainer(true) : settrainer(false);
   };
   return (
     <Container>
@@ -80,11 +98,11 @@ export default function Signup() {
             <RiLockPasswordLine color="#4a4a4a" />
             <input onChange={(event)=> {password=(event.target.value)}} type="password" placeholder="password" required></input>
           </div>
-          <form onChange={(event) => typeChangeHandler(event)}>
+          <form onChange={(event) => typeChangeHandler(event)} >
             <p>Register yourself as:</p>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <label>
-                <input type="radio" name="type" value="customer" checked />
+                <input type="radio" name="type" value="customer" />
                 customer
               </label>
               <label>

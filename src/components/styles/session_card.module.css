@@ -1,6 +1,7 @@
+/* previously height and width were 38 and 40*/
 .ctr {
   position: relative;
-  height: 38rem;
+  height: 38rem; 
   width: 40rem;
   background-color: white;
   border-radius: 2rem;
@@ -61,9 +62,9 @@
   text-align: left;
 }
 
-.label {
+.exercise_label {
   font-family: Font_Bold;
-  font-size: 3rem;
+  font-size: 2.2rem;
 }
 .desc {
   font-family: Font_medium;

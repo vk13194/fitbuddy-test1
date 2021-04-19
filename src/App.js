@@ -13,10 +13,8 @@ import Trainer_Landing from "./pages/Trainer_Landing";
 import Signup from "./pages/Signup";
 import Trainer_details from "./pages/Trainer_details";
 import User_details from "./pages/User_details";
-
+import About from "./pages/About";
 function App() {
-  //Under construction
-  //localStorage.removeItem("token");
  
  return (
     <div className="App">
@@ -46,6 +44,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signup/trainer" component={Trainer_details} />
           <Route exact path="/signup/user" component={User_details} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </Router>
     </div>

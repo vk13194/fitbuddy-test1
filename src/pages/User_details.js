@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
+import { useHistory, Link } from "react-router-dom";
 import {
   TextInputs,
   User,
@@ -44,7 +45,71 @@ const PrettoSlider = withStyles({
     boxShadow: "2px 2px 4px grey",
   },
 })(Slider);
+function checkStatus(data){
+  console.log("check status");
+  if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
+  else if(data.success == false) 
+  {
+    var errorLabel=document.getElementById("loginErrorLabel");
+    errorLabel.innerHTML=(data.error);
+    errorLabel.hidden=false;
+  }
+  if(data.success==null)
+  {
+  var payload=localStorage.getItem("token").split(".")[1];
+  var decoded=atob(payload);
+  var result=JSON.parse(decoded);
+  console.log(result+".."+result.role);
+  if(result.role == "customer")
+  {
+    document.getElementById("redirectToUserProfileButton").click();
+  }
+  else if(result.role == "trainer")
+  {
+    document.getElementById("redirectToTrainerProfileButton").click();
+  }
+}
+}
 
+function evaluateResult(data)
+{
+  console.log(data);
+if(data.success==true)
+{
+  fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
+    method: "POST",
+    headers: {
+      "Content-type": "application/json" 
+    },
+    body : JSON.stringify({
+      "email" : localStorage.getItem("email"),
+      "password" : localStorage.getItem("password")
+    })
+  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+}
+else if(data.success==false) 
+{
+  cleanupData();
+  alert(data.error);
+  //redirect to home page
+  document.getElementById("redirectToHomePage").click();
+}
+}
+function cleanupData()
+{
+  localStorage.removeItem("email");
+  localStorage.removeItem("password");
+  localStorage.removeItem("age");
+  localStorage.removeItem("name");
+  localStorage.removeItem("mobileNumber");
+  localStorage.removeItem("gender");
+  localStorage.removeItem("weight");
+  localStorage.removeItem("height");
+  localStorage.removeItem("city");
+  localStorage.removeItem("country");
+  localStorage.removeItem("bio");
+
+}
 export default function User_details() {
   let gender="";
   let country="";
@@ -79,17 +144,17 @@ export default function User_details() {
               else if(gender=="Male") {gender="Female";document.getElementById("male_gender_button").className="gender_unselected";event.target.className="gender_selected";}
             }} className="gender_unselected" value="Female">Female</button>
             <p>Name</p>
-            <input onChange={(event)=>{name=event.target.value}} type="text" placeholder="Fit XXXXXX" />
+            <input onChange={(event)=>{name=event.target.value}} type="text" placeholder="Fit XXXXXX" required/>
           </div>
           <div className="ctr_2">
             <p>Country, City</p>
             <input onChange={(event)=>{
               country=event.target.value.split(",")[0];
               city=event.target.value.split(",")[1];
-            }}type="text" placeholder="India, New Delhi" />
+            }}type="text" placeholder="India, New Delhi" required/>
 
             <p>Mobile Number</p>
-            <input onChange={(event)=>{mobileNumber=event.target.value}} type="text" placeholder="+91 7800000000" />
+            <input onChange={(event)=>{mobileNumber=event.target.value}} type="text" placeholder="+91 7800000000" required/>
           </div>
         </div>
       </TextInputs>
@@ -136,25 +201,33 @@ export default function User_details() {
             </label>
             <input id="file-upload" type="file" />
           </ProfileImage>
-          <TickCtr onClick={()=>fetch("https://staging-fitbuddy.herokuapp.com/auth/register/customer",{
-    method: "POST",
-    headers: {
-      "Content-type": "application/json" 
-    },
-    body : JSON.stringify({
-  "email": localStorage.getItem("email"),
-  "password": localStorage.getItem("password"),
-  "name": name,
-  "age": age,
-  "mobileNumber": mobileNumber,
-  "gender": gender,
-  "weight": weight,
-  "height": height,
-  "city": city,
-  "country": country,
-  "bio": "This is my bio. Blah blah blah"
-})}).then((res)=>res.json()).then((data)=>data)
-}>
+          <TickCtr onClick={()=>{
+      
+          fetch("https://staging-fitbuddy.herokuapp.com/auth/register/customer",{
+            method: "POST",
+            headers: {
+             "Content-type": "application/json" 
+              },
+              body : JSON.stringify({
+             "email": localStorage.getItem("email"),
+             "password": localStorage.getItem("password"),
+             "name": name,
+                "age": age,
+                 "mobileNumber": mobileNumber,
+             "gender": gender,
+              "weight": weight,
+             "height": height,
+             "city": city,
+              "country": country,
+              "bio": "This is my bio. Blah blah blah"
+              })}).then((res)=>res.json()).then((data)=>{evaluateResult(data)});
+            }
+
+              }>
+              <Link to="/user/profile"><button id="redirectToUserProfileButton" hidden="true"></button></Link>
+            <Link to="/trainer/profile"><button id="redirectToTrainerProfileButton" hidden="true"></button></Link>
+            <Link to="/"><button id="redirectToHomePage" hidden="true"></button></Link>
+
             <TiTick />
           </TickCtr>
         </div>

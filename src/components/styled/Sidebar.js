@@ -64,6 +64,13 @@ const Sidebar = styled.div`
     display: flex;
     align-items: center;
     font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 0;
+    font-family: Font_smedium;
+  }
+  //Amber changed
+  .logoutbtn:hover{
+    opacity: 0.8;
   }
   .logout-ico {
     margin-right: 0.2rem;

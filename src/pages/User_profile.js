@@ -8,8 +8,33 @@ import { BsPlay, BsGraphUp, BsPlus } from "react-icons/bs";
 import { BiDumbbell } from "react-icons/bi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
-
+import { useHistory } from "react-router";
+function checkStatus(data)
+{
+  console.log(data);
+  console.log(data["name"]);
+  console.log(data.age);
+}
 export default function User_profile() {
+  let history=useHistory();
+  let token=localStorage.getItem("token");
+  console.log("Ran");
+  if(token==null) 
+  {
+    alert("You need to log in First...");
+    history.replace("/");
+  }
+  else
+  {
+    var link="https://staging-fitbuddy.herokuapp.com/api/customers/current/info";
+    fetch(link,{
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "token":token
+    }
+  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+  }
   return (
     <div>
       <Sidebar>
@@ -40,7 +65,7 @@ export default function User_profile() {
               <BsPlus className="icon" /> Session Details
             </p>
           </div>
-          <p className="logoutbtn">
+          <p onClick={()=>{localStorage.removeItem("token"); history.replace("/")}} className="logoutbtn">
             <BiDumbbell className="logout-ico" />
             Log out
           </p>

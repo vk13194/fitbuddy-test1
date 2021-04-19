@@ -9,15 +9,15 @@ export default function Trainer_Landing() {
         <div className="vw_1">
           <div className="txt_vw1">
             <p className="feature_txt">Features of</p>
-            <p className="app_txt">APP I.E.</p>
-            <p className="highlights">* Workout Template</p>
-            <p className="highlights">* Cutomer Profile and Fitness Goals</p>
+            <p className="app_txt">APP </p>
+            <p className="highlights">* Create your signature workout</p>
+            <p className="highlights">* Get customer profile and fitness aspiration on single click</p>
             <p className="highlights">
-              * Group Training Through Live Streaming
+              * Get customer workout summary to track their progress
             </p>
-            <p className="highlights">* Customer Progress Tracking</p>
-            <p className="highlights">* Create Customized Fitness Plans</p>
-            <p className="highlights">* In-App Messaging</p>
+            <p className="highlights">* Customer attendance record</p>
+            <p className="highlights">* Integrated payment gateway and customized video conferencing screen</p>
+            <p className="highlights">* In-app messaging </p>
           </div>
           <VideoCtr />
         </div>
