@@ -14,6 +14,9 @@ import Signup from "./pages/Signup";
 import Trainer_details from "./pages/Trainer_details";
 import User_details from "./pages/User_details";
 import About from "./pages/About";
+import Pricing_details from "./pages/Pricing_details";
+import Otp_screen from "./pages/Otp_screen";
+import Session_timing from "./pages/Session_timing";
 function App() {
  
  return (
@@ -45,6 +48,9 @@ function App() {
           <Route exact path="/signup/trainer" component={Trainer_details} />
           <Route exact path="/signup/user" component={User_details} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/pricingdetails" component={Pricing_details}/>
+          <Route exact path="/otpscreen" component={Otp_screen}/>
+          <Route exact path="/sessiontiming" component={Session_timing}/>
         </Switch>
       </Router>
     </div>

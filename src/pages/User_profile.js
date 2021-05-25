@@ -31,7 +31,7 @@ export default function User_profile() {
     method: "GET",
     headers: {
       "Content-type": "application/json",
-      "token":token
+      "x-access-token":token
     }
   }).then((res)=>res.json()).then((data)=>checkStatus(data));
   }

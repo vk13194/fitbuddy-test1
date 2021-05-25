@@ -1,0 +1,113 @@
+.main_frame{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+.fitbuddy_logo_container img{
+width: 200px;
+height: 200px;
+}
+.otp_enter_message p{
+  color: gray;
+  font-family: Font_medium;
+  font-size: 1.4rem;
+}
+.otp_input{
+  text-align: center;
+}
+.divInner input:focus{
+  outline-width: 0;
+}
+.divInner input{
+  font-family: Font_smedium;
+  font-size: 25px;
+
+}
+.partitioned {
+  padding-left: 10px;
+  letter-spacing: 36px;
+  border: 0;
+  background-image: linear-gradient(to left,gray 70%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 50px 3px;
+  background-repeat: repeat-x;
+  background-position-x: 35px;
+  width: 328px;
+  min-width: 328px;
+}
+
+/*.partitioned {
+    padding-left: 15px;
+    letter-spacing: 42px;
+    border: 0;
+    background-image: linear-gradient(to left,gray 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 3px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    width: 328px;
+    min-width: 328px;
+  }
+*/  
+  .divInner{
+    left: 0;
+    position: sticky;
+  }
+  
+  .divOuter{
+    width: 298px; 
+    overflow: hidden;
+  }
+  .finish_button{
+    margin-top: 30px;
+    width:180px;
+    height:50px;
+    font-family: Font_medium;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.4rem 1.5rem;
+    outline: none;
+    border-radius: 3rem;
+    transition: all ease 0.2s;
+    border: 2px transparent;
+    color: white;
+    background: rgb(162, 185, 51);
+    background: linear-gradient(
+      180deg,
+      rgba(162, 185, 51, 1) 67%,
+      rgba(83, 94, 25, 1) 98%
+    );
+    box-shadow: 2px 2px 4px grey;
+}
+.didnt_receive_otp{
+  display: inline-block;
+  font-family: Font_smedium;
+}
+.otp_resend{
+  font-family: Font_bold;
+  color:darkcyan;
+  font-size: 1.1rem;
+}
+.trouble_logging_in{
+  font-family: Font_bold;
+}
+.back_button{
+  font-family: Font_medium;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 10rem;
+
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 0 2px #a3a3a3;
+  background-color: transparent;
+  color: #a3a3a3;
+  padding: 0.4rem 1.5rem;
+  outline: none;
+  border-radius: 1rem;
+  transition: all ease 0.2s;
+  background-color: white;
+
+}

@@ -1,0 +1,206 @@
+.main_frame{
+    width: 50% ;
+}
+.session_timing_table{
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+.session_timing_table tr th,td{
+    border: 0;
+    text-align: center;
+    width: 200px;
+    vertical-align: top;
+}
+.session_timing_table tr{
+}
+.exercise_button{
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    margin-left: 0;
+}
+.exercise_button_day{
+    border: 2px solid gray;
+    border-radius: 5px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    margin-right:10px;
+    display: inline-block;
+    word-wrap: break-word;
+    width: 170px;
+}
+.exercise_button_time{
+  border: 2px solid gray;
+  border-radius: 5px;
+  color: gray;
+  background-color: white;
+  font-size: 1.2rem;
+  font-family: Font_medium;
+  margin-right:10px;
+  display: inline-block;
+  word-wrap: break-word;
+  width: 250px;
+}
+
+
+.exercise_button:focus{
+    outline-width: 0;
+}
+
+.plus_button{
+border-radius: 50%;
+background-color: white;
+border: 2px solid gray;
+}
+.timing_div{
+    border: 2px solid gray;
+    border-radius: 15px;
+    color: gray;
+}
+.day_div{
+    border: 2px solid gray;
+    border-radius: 5px;
+    color: gray;
+
+}
+
+/*.column{
+    display: inline;
+}*/
+.column{
+    display: inline-block;
+    width: fit-content;
+    vertical-align: top;
+
+}
+.save_button{
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    width: 8vw;
+
+    cursor: pointer;
+    transition: all ease 0.2s;
+    border: 2px transparent;
+    color: white;
+    background: rgb(162, 185, 51);
+    background: linear-gradient(
+      180deg,
+      rgba(162, 185, 51, 1) 67%,
+      rgba(83, 94, 25, 1) 98%
+    );
+    box-shadow: 2px 2px 4px grey;
+
+}
+.cancel_button{
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    width: 8vw; 
+}
+.cancel_button:hover{
+    background-color: rgb(162, 185, 51);
+}
+.delete_button{
+    border-radius: 5px;
+    border: 2px solid gray;
+    width: 25px;
+    height: 25px;
+    background-image: url("./required_images/delete_icon.png");
+    background-color: white;   
+}
+
+
+.dropdown_check_list {
+    display: inline-block;
+  }
+  
+  .dropdown_check_list .anchor {
+    position: relative;
+    cursor: pointer;
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    margin-left: 0;
+
+  }
+  
+  .dropdown_check_list .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+  
+  .dropdown_check_list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+  }
+  
+  .dropdown_check_list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .dropdown_check_list ul.items li {
+    list-style: none;
+  }
+  
+  .dropdown_check_list.visible .anchor {
+    color: #0094ff;
+  }
+  
+  .dropdown_check_list.visible .items {
+    display: block;
+  }
+  .exercise_button_span{
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+  .exercise_button_ul_list{
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: gray;
+    background-color: white;
+    font-size: 1.2rem;
+    font-family: Font_medium;
+    margin-left: 0;
+    list-style-type: none;
+}
+.exercise_button_ul_list li{
+  white-space: nowrap;
+  width: fit-content;
+}

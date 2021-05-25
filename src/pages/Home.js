@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import Slider from "infinite-react-carousel";
 import Session_card from "../components/Session_card";
-import { video } from "video.js";
 import ReactCardCarousel from "react-card-carousel";
 import { motion, useAnimation } from "framer-motion";
 import Carousels from "react-elastic-carousel";
@@ -124,20 +123,12 @@ function VideoCtr() {
             id="my-player"
             controls
             preload="auto"
-            poster="/assets/logo.png"
+            poster="/assets/logocopy.png"
           >
-            <source
-              src="//vjs.zencdn.net/v/oceans.mp4"
-              type="video/mp4"
-            ></source>
-            <source
-              src="//vjs.zencdn.net/v/oceans.webm"
-              type="video/webm"
-            ></source>
-            <source
-              src="//vjs.zencdn.net/v/oceans.ogv"
-              type="video/ogg"
-            ></source>
+              <source
+                src="../../videos/video_demo_1.mp4"
+                type="video/mp4"
+              ></source>
           </video>
         </div>
         <div className={home.vw_3_post_video}>WHY JOIN FITBUDDY</div>
@@ -163,6 +154,49 @@ function VideoCtr() {
     }
   }
   }
+
+  .....Extra stuff from above>>>>
+                <source
+                src="//vjs.zencdn.net/v/oceans.webm"
+                type="video/webm"
+              ></source>
+              <source
+                src="//vjs.zencdn.net/v/oceans.ogv"
+                type="video/ogg"
+              ></source>
+              
+                <ul>
+                <li>Time crunch? </li>
+                <li>Money crunch?</li>
+                <li>Incorrect techniques?</li>
+                <li>Far away gym?</li>
+                <li>Social Distancing?</li>
+              </ul>
+
+              <div className={home.img_txt}>
+                <span className={home.img_txt_1}>What Stops You To Be</span>
+                <br />
+                <span className={home.img_txt_2}>Fit & Healthy</span>
+              </div>
+              
+                        <div className={home.best_txt}>
+            <span className={home.best_fitbuddy}>Best Fitbuddy</span>
+            <br />
+            <span className={home.best_lower_ctr}>
+              <span className={home.best_session}>Sessions</span>
+              <HiOutlineArrowNarrowRight size="5rem" />
+            </span>
+          </div>
+<a style={{ cursor: "pointer" }}
+              target="_blank"
+              href="https://www.iiitd.ac.in/">
+            <img
+              className={home.client_logos}
+              src="https://www.iiitd.ac.in/sites/default/files/images/logo/style1colorlarge.jpg"
+              alt="client"
+            />
+            </a>
+
 */
 function checkStatus(data){
   console.log("check status");
@@ -350,8 +384,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+        //"In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -359,8 +393,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+     // description:
+     //   "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -368,8 +402,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+     // description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -377,8 +411,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -386,8 +420,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -395,8 +429,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -404,8 +438,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
     {
       name: "Session Name",
@@ -413,8 +447,8 @@ export default function Home() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
       price: 1599,
       duration: "3 months",
-      description:
-        "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+      //description:
+      //  "In publishing and graphic design, form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     },
   ];
 
@@ -422,27 +456,27 @@ export default function Home() {
     {
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShybRW4HuzTzpy7lHkPjVM8T25H_nDHSjpJg&usqp=CAU",
-      txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
+      /*txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
       text commonly used to demonstrate the visual form of a document or
       a typeface without relying on meaningful content. Lorem ipsum may
       be used as a placeholder before final copy is available"`,
-    },
+    */},
     {
       img:
         "data:image/jpeg;base64,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",
-      txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
+      /*txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
       text commonly used to demonstrate the visual form of a document or
       a typeface without relying on meaningful content. Lorem ipsum may
       be used as a placeholder before final copy is available"`,
-    },
+    */},
     {
       img:
         "data:image/jpeg;base64,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",
-      txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
+      /*txt: `"In publishing and graphic design, Lorem ipsum is a placeholder
       text commonly used to demonstrate the visual form of a document or
       a typeface without relying on meaningful content. Lorem ipsum may
       be used as a placeholder before final copy is available"`,
-    },
+    */},
   ];
   const [rendermenu, setrendermenu] = useState(false);
   return (
@@ -500,7 +534,7 @@ export default function Home() {
               <Link to="/about" style={{textDecoration:'none'}}>
                <p>
                 <img className={home.icon} src="/assets/about.png" alt="" />
-                ABOUT 
+                ABOUT
               </p>
               </Link>
               <p>
@@ -522,39 +556,17 @@ export default function Home() {
             className={home.carousal}
             dotsClass="carousel-dots"
             dots
-            // autoplay
+            autoplay={true} 
             arrows={false}
             swipe={false}
           >
             <div className={home.carousel_image1}>
-              <div className={home.img_txt}>
-                <span className={home.img_txt_1}>What Stops You To Be</span>
-                <br />
-                <span className={home.img_txt_2}>Fit & Healthy</span>
-              </div>
             </div>
             <div className={home.carousel_image2}>
               <span className={home.carousel_image2_txt}>
-              <ul>
-                <li>Time crunch? </li>
-                <li>Money crunch?</li>
-                <li>Incorrect techniques?</li>
-                <li>Far away gym?</li>
-                <li>Social Distancing?</li>
-              </ul>
               </span>
             </div>
             <div className={home.carousel_image3}>
-            <span>
-              <p className={home.carousel_image3_txt1}>FitBuddy – App that corrects and Curates</p>
-              <p className={home.carousel_image3_txt3}>Get going with three easy steps</p>
-              <ul className={home.carousel_image3_txt2}>
-                <li>1. Click on the workout from the FitBuddy app </li>
-                <li>2. Align your mobile / laptop camera</li>
-                <li>3.  Start exercising</li>
-              </ul>
-              <p className={home.carousel_image3_txt1}>Get assisted by AI enabled app that track your posture and provide real time feedback</p>
-              </span>
             </div>
           </Slider>
           <div className={home.ctr1_line}>
@@ -604,15 +616,7 @@ export default function Home() {
               />
               <FaTwitterSquare className={home.trial_media} color="#2a9bce" />
             </div>
-          </div>
-          <div className={home.best_txt}>
-            <span className={home.best_fitbuddy}>Best Fitbuddy</span>
-            <br />
-            <span className={home.best_lower_ctr}>
-              <span className={home.best_session}>Sessions</span>
-              <HiOutlineArrowNarrowRight size="5rem" />
-            </span>
-          </div>
+          </div><br></br><br></br>
           <Slider
             className={home.carousal2}
             dotsClass="carousel-dots"
@@ -621,16 +625,8 @@ export default function Home() {
           >
             <video id="my-player" controls preload="auto" poster={poster}>
               <source
-                src="//vjs.zencdn.net/v/oceans.mp4"
+                src="../../videos/video_demo_1.mp4"
                 type="video/mp4"
-              ></source>
-              <source
-                src="//vjs.zencdn.net/v/oceans.webm"
-                type="video/webm"
-              ></source>
-              <source
-                src="//vjs.zencdn.net/v/oceans.ogv"
-                type="video/ogg"
               ></source>
             </video>
           </Slider>
@@ -706,7 +702,7 @@ export default function Home() {
           </FadeInWhenVisible>
           <FadeInWhenVisible>
             <div className={home.vw_3_txt_box}>
-              <img src="/assets/location.png" />
+              <img src="/assets/real_time_posture_correction.png" />
               <div>
                 <p className={home.vw_3_txt_box_line1}>Real time Posture Correction</p>
                 <p className={home.vw_3_txt_box_line2}>
@@ -717,7 +713,7 @@ export default function Home() {
           </FadeInWhenVisible>
           <FadeInWhenVisible>
             <div className={home.vw_3_txt_box}>
-              <img src="/assets/timing.png" />
+              <img src="/assets/repetition_set_calorie_count.png" />
               <div>
                 <p className={home.vw_3_txt_box_line1}>Repetition / Set & calorie count</p>
                 <p className={home.vw_3_txt_box_line2}>
@@ -728,7 +724,7 @@ export default function Home() {
           </FadeInWhenVisible>
           <FadeInWhenVisible>
             <div className={home.vw_3_txt_box}>
-              <img src="/assets/choose_trainer.png" />
+              <img src="/assets/complete_fitness_log.png" />
               <div>
                 <p className={home.vw_3_txt_box_line1}>
                   Complete fitness log
@@ -741,7 +737,7 @@ export default function Home() {
           </FadeInWhenVisible>
           <FadeInWhenVisible>
             <div className={home.vw_3_txt_box}>
-              <img src="/assets/timing.png" />
+              <img src="/assets/anytime_anywhere_fitness.png" />
               <div>
                 <p className={home.vw_3_txt_box_line1}>Anytime & Anywhere fitness</p>
                 <p className={home.vw_3_txt_box_line2}>
@@ -842,15 +838,7 @@ export default function Home() {
               alt="client"
             />
             </a>
-            <a style={{ cursor: "pointer" }}
-              target="_blank"
-              href="https://www.iiitd.ac.in/">
-            <img
-              className={home.client_logos}
-              src="https://www.iiitd.ac.in/sites/default/files/images/logo/style1colorlarge.jpg"
-              alt="client"
-            />
-            </a>
+            
           </Marquee>
         </div>
         <div className={home.vw_5_s3}>

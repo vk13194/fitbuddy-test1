@@ -221,8 +221,7 @@ const Trainer = styled.div`
     font-size: 1rem;
     font-family: Font_smedium;
   }
-  .row_1,
-  .row_2 {
+  .row_1{
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -230,6 +229,14 @@ const Trainer = styled.div`
     font-family: Font_smedium;
     margin: 1rem 0;
   }
+  .row_2 {
+    text-align: left;
+    display: flex;
+    font-size: 1rem;
+    font-family: Font_smedium;
+    margin: 1rem 0;
+  }
+  
   .row_2 p {
     display: flex;
   }
@@ -245,6 +252,24 @@ const Trainer = styled.div`
     border: 2px solid #a3a3a3;
     outline: none;
   }
+  .plus_button{
+    border-radius: 50%;
+background-color: white;
+border: 2px solid gray;
+width: 40px;
+height: 40px;
+cursor:pointer;
+  }
+
+  .div_style{
+    width: 12rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 2px solid #a3a3a3;
+    outline: none;
+  }
+
 `;
 
 const ProfileImage = styled.div`
