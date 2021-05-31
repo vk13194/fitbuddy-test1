@@ -501,13 +501,11 @@ export default function Home() {
           />
           {rendermenu && (
             <div className={home.p_menu_ctr}>
-              <p>
-                <img className={home.icon} src="/assets/live.png" alt="" /> LIVE
-              </p>
+              <Link to="/about" style={{textDecoration:'none'}}>
               <p>
                 <img className={home.icon} src="/assets/about.png" alt="" />
                 ABOUT
-              </p>
+              </p></Link>
               <p>
                 <img className={home.icon} src="/assets/session.png" alt="" />
                 PACKAGES
