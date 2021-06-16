@@ -22,7 +22,7 @@ export default function Trainer_details() {
   let weight="";
   let perSessionCharge="";
   let bio="";
-  let experience;
+  let experience='{ "experiences" : [';
 /*              <label>
               <p>
                   PSC<p>(per Session Charge)</p>
@@ -30,10 +30,28 @@ export default function Trainer_details() {
                 <input placeholder="₹ 1500" type="number" onChange={(event)=>{perSessionCharge=event.target.value}}/>
               </label>
 */
+/*{
+  "name": name,
+  "gender": gender,
+  "Country":country,
+  "city":city,
+  "MobNum":phoneNumber,
+  "age":age,
+  "height":height,
+  "weight":weight,
+  "experience": experience,
+  "persession":perSessionCharge,
+  "profilePhoto":link,
+  "bio":bio
+}*/
 function addExperienceRow(event){
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
-  var experience=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
+  var exp=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
   console.log(session);
+  console.log(exp);
+  var expRow='{ "Session" :'+session+ ', "exp":'+exp+' },';
+  experience=experience+expRow;
+  console.log(expRow);
   console.log(experience);
   var backupLabel=document.getElementById("experienceRow");
   document.getElementById("experienceRow").remove();
@@ -47,13 +65,78 @@ function addExperienceRow(event){
   outerspan.appendChild(label);
   label=document.createElement("label");
   div=document.createElement("div");
-  div.innerText=experience + " years";
+  div.innerText=exp + " years";
   div.className="div_style";
   label.appendChild(div);
   outerspan.appendChild(label);
   document.getElementById("outerDiv").appendChild(outerspan);
   document.getElementById("outerDiv").appendChild(backupLabel);
 }
+function proceedToNext()
+{
+  if(gender=="") {
+    console.log("Select Gender");
+    document.getElementById("select_gender_error_label").style.display="block";
+}
+  else if(name=="") {
+    console.log("Name Required");
+    document.getElementById("name_input").focus();
+  }
+  else if(country=="" || city=="") {
+    if(country=="" && city=="") {
+      console.log("City and Country Required");
+      document.getElementById("city_country_input").focus();
+    }
+    else if(city=="") {
+      console.log("City Required");
+      document.getElementById("city_country_input").focus();
+    }
+    else {
+      console.log("Country Required");
+      document.getElementById("city_country_input").focus();
+    }
+  }
+  else if(phoneNumber==""){
+    
+  }
+  var filename=document.getElementById("file-upload").value.slice(12);
+  var file=document.getElementById("file-upload");
+  var extension=filename.substring(filename.lastIndexOf('.')+1, filename.length);
+  console.log(extension.toLowerCase());
+  var newFile=new File([file],"something1"+"."+extension.toLowerCase(),{type: "image/"+extension.toLowerCase()});
+  console.log(file.type+"--"+newFile.type);
+  console.log(URL.createObjectURL(newFile));
+  console.log(document.getElementById("file-upload").filename);
+//document.getElementById("file-upload").value=document.getElementById("file-upload").value.replace(filename,"something1"+extension);
+console.log(document.getElementById("file-upload").value);
+  var newFileName = file.filename + "new";
+  var formData = new FormData();
+  formData.append('file',file.files[0], newFileName);
+  console.log(formData.getAll(0));
+  //document.getElementById("display_img").src=URL.createObjectURL(formData.files[0]);
+  newFileName="something1."+extension;
+
+  console.log(newFile);
+  console.log(file);
+  fetch("http://3.137.209.222:8000/image/Strength_Stamina.png",{
+        method: "POST",
+        body : file
+      }).then((res)=>res.json()).then((data)=>{console.log("hell");alert(data);});   
+
+ /* alert(["name : "+name,
+        "gender : "+gender,
+        "Country : "+country,
+        "city : "+city,
+        "MobNum : "+phoneNumber,
+        "age : "+age,
+        "height : "+height,
+        "weight : "+weight,
+        "experience : "+experience.replace(/,\s*$/, "")+"]}",
+        "persession : "+perSessionCharge,
+        //"profilePhoto : "+link,
+        "bio : "+bio]);
+*/}
+
   return (
     <Trainer>
       <TextInputs>
@@ -66,23 +149,26 @@ function addExperienceRow(event){
           <div className="ctr_1">
             <p>Gender</p>
             <button id="male_gender_button" onClick={(event)=>{
+                  document.getElementById("select_gender_error_label").style.display="none";
               if(gender!="" && gender=="Male") {gender="";event.target.className="gender_unselected";}
               else if(gender=="") {gender="Male";event.target.className="gender_selected";}
               else if(gender=="Female") {gender="Male";document.getElementById("female_gender_button").className="gender_unselected";event.target.className="gender_selected";}
             }} className="gender_unselected" value="Male">Male</button>
             <button id="female_gender_button" onClick={(event)=>{
+                  document.getElementById("select_gender_error_label").style.display="none";
               if(gender!="" && gender=="Female") {gender="";event.target.className="gender_unselected";}
               else if(gender=="") {gender="Female";event.target.className="gender_selected";}
               else if(gender=="Male") {gender="Female";document.getElementById("male_gender_button").className="gender_unselected";event.target.className="gender_selected";}
-            }} className="gender_unselected" value="Female">Female</button>
+            }} className="gender_unselected" value="Female">Female</button><br></br><label id="select_gender_error_label" style={{display:"none",color:"red"}}>Select Gender</label>
             <p>Name</p>
-            <input type="text" placeholder="Fit XXXXXX" onChange={(event)=>{name=event.target.value}}/>
+            <input id="name_input" type="text" placeholder="Fit XXXXXX" onChange={(event)=>{name=event.target.value}}/>
           </div>
           <div className="ctr_2">
             <p>Country, City</p>
-            <input onChange={(event)=>{
+            <input id="city_country_input" onChange={(event)=>{
               country=event.target.value.split(",")[0];
               city=event.target.value.split(",")[1];
+              if(city==undefined) city="";
             }}type="text" placeholder="India, New Delhi" />
 
             <p>Mobile Number</p>
@@ -120,7 +206,7 @@ function addExperienceRow(event){
               </label>
               <label>
                 <p>Experience</p>
-                <input placeholder="4 years" type="number" onChange={(event)=>{experience=event.target.value}}/>
+                <input placeholder="4 years" type="number" />
               </label>
               <label>
               <p>
@@ -146,21 +232,13 @@ function addExperienceRow(event){
             >
               <p> Profile Photo</p>
             </label>
-            <input id="file-upload" type="file" />
+            <input id="file-upload" type="file" accept="image/*"/>
           </ProfileImage>
-          <TickCtr onClick={()=>alert(["name : "+name,
-        "gender : "+gender,
-        "Country : "+country,
-        "city : "+city,
-        "MobNum : "+phoneNumber,
-        "age : "+age,
-        "height : "+height,
-        "weight : "+weight,
-        "experience : "+experience,
-        "persession : "+perSessionCharge,
-        "bio : "+bio])}>
+          <TickCtr onClick={()=>{proceedToNext()}}>
             <TiTick />
           </TickCtr>
+          <img id="display_img" className="something"></img>
+
         </div>
       </div>
     </Trainer>

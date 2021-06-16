@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Pricing_details from "./pages/Pricing_details";
 import Otp_screen from "./pages/Otp_screen";
 import Session_timing from "./pages/Session_timing";
+import Admin_banner_panel from "./pages/Admin_banner_panel";
 function App() {
  
  return (
@@ -51,6 +52,7 @@ function App() {
           <Route exact path="/pricingdetails" component={Pricing_details}/>
           <Route exact path="/otpscreen" component={Otp_screen}/>
           <Route exact path="/sessiontiming" component={Session_timing}/>
+          <Route exate path="/admin_banner_panel" component={Admin_banner_panel}/>
         </Switch>
       </Router>
     </div>

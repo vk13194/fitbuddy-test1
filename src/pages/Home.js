@@ -501,11 +501,10 @@ export default function Home() {
           />
           {rendermenu && (
             <div className={home.p_menu_ctr}>
-              <Link to="/about" style={{textDecoration:'none'}}>
               <p>
                 <img className={home.icon} src="/assets/about.png" alt="" />
                 ABOUT
-              </p></Link>
+              </p>
               <p>
                 <img className={home.icon} src="/assets/session.png" alt="" />
                 PACKAGES
@@ -878,8 +877,8 @@ export default function Home() {
               <AiFillYoutube className={home.follow_icons} />
             </div>
             <div className={`${home.avilable_app_ctr} ${home.HD_media_icons}`}>
-              <img src="/assets/app_store.PNG" />
-              <img src="/assets/google_play.PNG" />
+              <img src="/assets/app_store.png" />
+              <img src="/assets/google_play.png" />
             </div>
           </div>
           <div className={home.vw_5_s3_r2}>
@@ -908,7 +907,7 @@ export default function Home() {
               <AiFillLinkedin className={home.follow_icons} />
               <AiFillYoutube className={home.follow_icons} />
             </div>
-            <img src="/assets/payment_options.PNG" alt="payment options" />
+            <img src="/assets/payment_options.png" alt="payment options" />
           </div>
           <div className={home.vw_5_s3_r3}>
             <p>Terms & Conditions</p>

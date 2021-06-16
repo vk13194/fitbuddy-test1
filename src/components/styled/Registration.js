@@ -106,6 +106,10 @@ const TextInputs = styled.div`
     border: none;
     border-bottom: 2px solid grey;
   }
+  .details input:focus{
+   border-bottom: 2px solid red; 
+  }
+
   .ctr_1 {
   }
   .ctr_2 {
@@ -268,6 +272,11 @@ cursor:pointer;
     border-radius: 8px;
     border: 2px solid #a3a3a3;
     outline: none;
+  }
+  .something{
+    width: 100px;
+    height: 100px; 
+    background-color: blue;
   }
 
 `;
