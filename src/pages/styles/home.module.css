@@ -303,14 +303,16 @@
   background-repeat: no-repeat;
 }
 .carousel_image1 {
-  /*background-image: url("./carousel_images/1_new.jpg");*/
-  background-image: url("http://3.137.209.222:8000/image/1_new.jpg");
+  background-image: url("./carousel_images/1_new.jpg");
+  /*background-image: url("http://3.137.209.222:8000/image/1_new.jpg");*/
 }
 .carousel_image2 {
-  background-image: url("http://3.137.209.222:8000/image/2_new.jpg");
+  background-image: url("./carousel_images/2_new.jpg");
+  /*background-image: url("http://3.137.209.222:8000/image/2_new.jpg");*/
 }
 .carousel_image3 {
-  background-image: url("http://3.137.209.222:8000/image/3_new.jpg");
+  background-image: url("./carousel_images/3_new.jpg");
+  /*background-image: url("http://3.137.209.222:8000/image/3_new.jpg");*/
 }
 .carousel_image2_txt{
   position: absolute;
