@@ -118,7 +118,7 @@ console.log(document.getElementById("file-upload").value);
 
   console.log(newFile);
   console.log(file);
-  fetch("http://3.137.209.222:8000/image/Strength_Stamina.png",{
+  fetch("http://3.137.209.222:8000/media/image/"+newFileName,{
         method: "POST",
         body : file
       }).then((res)=>res.json()).then((data)=>{console.log("hell");alert(data);});   
