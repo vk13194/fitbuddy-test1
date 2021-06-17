@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   HiOutlineArrowNarrowLeft,
   HiOutlineArrowNarrowRight,
@@ -10,8 +10,9 @@ import {
   TickCtr,
 } from "../components/styled/Registration.js";
 import { TiTick } from "react-icons/ti";
-
+import {useHistory} from "react-router-dom";
 export default function Trainer_details() {
+  const [photo,setPhoto]= useState("");
   let gender="";
   let country="";
   let city="";
@@ -20,9 +21,9 @@ export default function Trainer_details() {
   let age="";
   let height="";
   let weight="";
-  let perSessionCharge="";
   let bio="";
   let experience='{ "experiences" : [';
+  let history=useHistory();
 /*              <label>
               <p>
                   PSC<p>(per Session Charge)</p>
@@ -31,6 +32,8 @@ export default function Trainer_details() {
               </label>
 */
 /*{
+  "userid": localStorage.getItem("email");
+  "password": localStorage.getItem("password");
   "name": name,
   "gender": gender,
   "Country":country,
@@ -72,7 +75,23 @@ function addExperienceRow(event){
   document.getElementById("outerDiv").appendChild(outerspan);
   document.getElementById("outerDiv").appendChild(backupLabel);
 }
-function proceedToNext()
+function encodeImageFileAsURL(element) {
+  var file = element.files[0];
+  if(file!=undefined)
+  {
+  console.log(URL.createObjectURL(file));
+  document.getElementById("profile_label").style.backgroundImage="url("+URL.createObjectURL(file)+")";
+  var reader = new FileReader();
+  reader.onloadend = function() {
+    setPhoto(reader.result.toString());
+  }
+  reader.readAsDataURL(file);
+}
+else{
+  document.getElementById("profile_label").style.backgroundImage="url('')";
+}
+}
+/*function proceedToNext()
 {
   if(gender=="") {
     console.log("Select Gender");
@@ -102,40 +121,101 @@ function proceedToNext()
   var filename=document.getElementById("file-upload").value.slice(12);
   var file=document.getElementById("file-upload");
   var extension=filename.substring(filename.lastIndexOf('.')+1, filename.length);
-  console.log(extension.toLowerCase());
   var newFile=new File([file],"something1"+"."+extension.toLowerCase(),{type: "image/"+extension.toLowerCase()});
-  console.log(file.type+"--"+newFile.type);
-  console.log(URL.createObjectURL(newFile));
-  console.log(document.getElementById("file-upload").filename);
-//document.getElementById("file-upload").value=document.getElementById("file-upload").value.replace(filename,"something1"+extension);
-console.log(document.getElementById("file-upload").value);
-  var newFileName = file.filename + "new";
+ //document.getElementById("file-upload").value=document.getElementById("file-upload").value.replace(filename,"something1"+extension);
+var newFileName = file.filename + "new";
   var formData = new FormData();
-  formData.append('file',file.files[0], newFileName);
-  console.log(formData.getAll(0));
+//  formData.append('file',file.files[0], newFileName);
   //document.getElementById("display_img").src=URL.createObjectURL(formData.files[0]);
   newFileName="something1."+extension;
 
   console.log(newFile);
   console.log(file);
-  fetch("http://3.137.209.222:8000/media/image/"+newFileName,{
-        method: "POST",
-        body : file
-      }).then((res)=>res.json()).then((data)=>{console.log("hell");alert(data);});   
+  // alert(["name : "+name,
+  // "email :"+sessionStorage.getItem("email"),
+  // "password :"+sessionStorage.getItem("password"),
+  // "gender : "+gender,
+  // "Country : "+country,
+  // "city : "+city,
+  // "MobNum : "+phoneNumber,
+  // "age : "+age,
+  // "height : "+height,
+  // "weight : "+weight,
+  // "experience : "+experience.replace(/,\s*$/, "")+"]}",
+  // "persession : "+perSessionCharge,
+  // //"profilePhoto : "+link,
+  // "bio : "+bio]);
+console.log(sessionStorage.getItem("email").toString());
 
- /* alert(["name : "+name,
-        "gender : "+gender,
-        "Country : "+country,
-        "city : "+city,
-        "MobNum : "+phoneNumber,
-        "age : "+age,
-        "height : "+height,
-        "weight : "+weight,
-        "experience : "+experience.replace(/,\s*$/, "")+"]}",
-        "persession : "+perSessionCharge,
-        //"profilePhoto : "+link,
-        "bio : "+bio]);
-*/}
+  fetch("http://3.137.209.222:8000/TrainerReg/",{
+    method: "POST",
+    headers: {
+      "Content-type": "application/json" 
+    },
+    body : {
+      "userid": sessionStorage.getItem("email").toString(),
+  "password": sessionStorage.getItem("password"),
+  "name": name,
+  "gender": gender,
+  "country":country,
+  "city":city,
+  "mobileno":phoneNumber,
+  "age":age,
+  "height":height,
+  "weight":weight,
+  "experience": experience,
+  "description":bio,
+  "photo":file
+    }
+  }).then((res)=>res.json()).then((data)=>{console.log("hell");console.log(data);});   
+}*/
+const TrainerReg = () => {
+alert("test")
+console.log("fetching");
+fetch('http://3.137.209.222:8000/TrainerReg/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  
+  },
+  body: JSON.stringify({
+  
+    "action":"dashboard_data",
+    "userid":sessionStorage.getItem("email"),
+    'password':sessionStorage.getItem("password"),
+    'name': name,
+  'gender': gender,
+  'country':country,
+  'city':city,
+  'mobileno':phoneNumber,
+  'age':age,
+  'height':height,
+  'weight':weight,
+  'experience': experience.replace(/,\s*$/, "")+"]}",
+  'description':bio,
+  'photo':photo
+  
+  })
+}).then((response) => response.json())
+.then((responseJson) => {
+  // If server response message same as Data Matched
+  //setTobecollected(responseJson.Message);
+    if(responseJson.status=="200")
+    {
+      console.log(responseJson.data);
+      history.push("/trainer/profile");
+    }
+    else
+    {
+      alert(responseJson.Message);  
+    }
+}).catch((error) => {
+  // alert(error);
+  console.error(error);
+}); 
+console.log("out");
+}
 
   return (
     <Trainer>
@@ -225,6 +305,7 @@ console.log(document.getElementById("file-upload").value);
           <ProfileImage>
             <label
               for="file-upload"
+              id="profile_label"
               class="custom-file-upload"
               style={{
                 backgroundImage: `url()`,
@@ -232,13 +313,11 @@ console.log(document.getElementById("file-upload").value);
             >
               <p> Profile Photo</p>
             </label>
-            <input id="file-upload" type="file" accept="image/*"/>
+            <input id="file-upload" type="file" accept="image/*" onChange={()=>{encodeImageFileAsURL(document.getElementById("file-upload"));}}/>
           </ProfileImage>
-          <TickCtr onClick={()=>{proceedToNext()}}>
+          <TickCtr onClick={()=>{TrainerReg()}}>
             <TiTick />
           </TickCtr>
-          <img id="display_img" className="something"></img>
-
         </div>
       </div>
     </Trainer>

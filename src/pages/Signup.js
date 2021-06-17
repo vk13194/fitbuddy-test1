@@ -13,8 +13,6 @@ import {
 import { FaFacebook } from "react-icons/fa";
 
 export default function Signup() {
-  let email;
-  let password;
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
   const [drpdown, setdrpdown] = useState("indivisual or company");
@@ -43,8 +41,9 @@ export default function Signup() {
   }
   const nextStep = (event) => {
     event.preventDefault();
-    localStorage.setItem("email",email);
-    localStorage.setItem("password",password);
+    //sessionStorage.setItem("email",email);
+    //sessionStorage.setItem("password",password);
+    console.log(sessionStorage.getItem("email"));
     if(document.getElementsByName("type")[0].checked==true){
 
     }
@@ -55,13 +54,14 @@ export default function Signup() {
           "Content-type": "application/json" 
         },
         body : JSON.stringify({
-          "userid" : email,
+          "userid" : sessionStorage.getItem("email"),
         })
       }).then((res)=>res.json()).then((data)=>getStatus(data,"trainer"));    
     }
     else{
       document.getElementById("select_type_label").style.display="block";
     }
+    console.log(sessionStorage.getItem("email"));
     //Call to login for checking if trainer exist
   };
   const onMenuClick = (event) => {
@@ -95,6 +95,45 @@ export default function Signup() {
             </div>
           )}
 */
+const CheckLogin = () => {
+  if(document.getElementsByName("type")[0].checked==true){
+
+  }
+  else if(document.getElementsByName("type")[1].checked==true){
+
+    fetch('http://3.137.209.222:8000/TrainerLogin/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'  
+  },
+  body: JSON.stringify({  
+    "action":"dashboard_data",
+    "userid":document.getElementById("email").value,
+    'password':document.getElementById("password").value
+  })
+  }).then((response) => response.json())
+      .then((responseJson) => {
+          // If server response message same as Data Matched
+        //setTobecollected(responseJson.Message);
+        sessionStorage.setItem("email",document.getElementById("email").value);
+        sessionStorage.setItem("password",document.getElementById("password").value);
+          if(responseJson.Message=="Login Successfully")
+          {
+          history.push("/trainer/profile");
+          }
+          else if(responseJson.status="404"){
+            history.push("/signup/trainer");
+          }
+      }).catch((error) => {
+        // alert(error);
+        console.error(error);
+      });
+  
+  }else {
+  document.getElementById("select_type_label").style.display="block";
+}
+}
   return (
     <Container>
       <p className="decor_txt">
@@ -111,7 +150,8 @@ export default function Signup() {
           <div className="input_ctr">
             <BsChatSquareDots color="#4a4a4a" />
             <input
-              onChange={(event)=> {email=(event.target.value)}}
+              id="email"
+              onChange={(event)=> {sessionStorage.setItem("email",event.target.value);}}
               type="text" //previously type="email"
               placeholder="Email or mobile number"
               required
@@ -119,7 +159,7 @@ export default function Signup() {
           </div>
           <div className="input_ctr">
             <RiLockPasswordLine color="#4a4a4a" />
-            <input onChange={(event)=> {password=(event.target.value)}} type="password" placeholder="password" required></input>
+            <input id="password" onChange={(event)=> {sessionStorage.setItem("password",event.target.value);}} type="password" placeholder="password" required></input>
           </div>
           <form onChange={(event) => typeChangeHandler(event)} >
             <p>Register yourself as:</p>
@@ -135,7 +175,7 @@ export default function Signup() {
             </div>
             <p id="select_type_label" style={{color:"red",display:"none"}}>Please Select Trainer or User</p>
           </form>
-          <button className="continue" type="submit">
+          <button className="continue" onClick={CheckLogin} type="button">
             CONTINUE
           </button>
           <p className="tc">

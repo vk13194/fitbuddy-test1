@@ -273,11 +273,7 @@ cursor:pointer;
     border: 2px solid #a3a3a3;
     outline: none;
   }
-  .something{
-    width: 100px;
-    height: 100px; 
-    background-color: blue;
-  }
+
 
 `;
 
@@ -301,7 +297,8 @@ const ProfileImage = styled.div`
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   label p {
     position: absolute;

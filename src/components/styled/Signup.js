@@ -28,6 +28,24 @@ const Container = styled.div`
     margin: 8rem 0 0 14rem;
     text-shadow: 2px 2px 4px #0000004a;
   }
+  @media (max-width:1440px){
+    .decor_txt{
+      margin: 6rem 0 0 9rem;
+      font-size: 3.5rem;    
+    }
+  }
+  @media (max-width:1200px){
+    .decor_txt{
+      margin: 5rem 0 0 8rem;
+      font-size: 3rem;    
+    }
+  }
+  @media (max-width:1040px){
+    .decor_txt{
+      margin: 4rem 0 0 7rem;
+      font-size: 2.8rem;    
+    }
+  }
   .decor_txt p {
     color: #a3bb33;
   }
