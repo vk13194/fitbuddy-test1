@@ -25,7 +25,7 @@ const Container = styled.div`
     font-size: 4rem;
     color: #3f3d56;
     align-items: flex-start;
-    margin: 8rem 0 0 14rem;
+    margin: 5.5rem 0 0 12rem;
     text-shadow: 2px 2px 4px #0000004a;
   }
   @media (max-width:1440px){
