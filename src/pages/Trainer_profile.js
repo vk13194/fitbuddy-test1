@@ -10,18 +10,53 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 
 export default function Trainer_profile() {
+  fetch('http://3.137.209.222:8000/TrainerLogin/', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'  
+    },
+    body: JSON.stringify({  
+      "action":"dashboard_data",
+      "userid":sessionStorage.getItem("email"),
+      'password':sessionStorage.getItem("password")
+    })
+    }).then((response) => response.json())
+        .then((responseJson) => {
+            // If server response message same as Data Matched
+          //setTobecollected(responseJson.Message);
+          console.log(responseJson);
+          console.log(responseJson.data[0]);
+            if(responseJson.Message=="Login Successfully")
+            {
+              document.getElementById("trainer_name").innerHTML=responseJson.data[0].name;
+              document.getElementById("trainer_image").src=responseJson.data[0].photo;
+              document.getElementById("bio").innerHTML=responseJson.data[0].description;
+            }
+            else if(responseJson.status="404"){
+              console.error("Some Error")
+            }
+        }).catch((error) => {
+          // alert(error);
+          console.error(error);
+        });
+  function displaySessionTimeScreen(){
+    
+  }
+  
   return (
     <div>
       <Sidebar>
         <div className="content">
           <img
+          id="trainer_image"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU"
             alt="profile"
             className="profile"
           />
           <div>
-            <p className="name">Trainer Name</p>
-            <p className="designation">Yoga Expert</p>
+            <p id="trainer_name" className="name">Trainer Name</p>
+            <p className="designation"></p>
           </div>
           <div className="options">
             <p>
@@ -30,7 +65,7 @@ export default function Trainer_profile() {
             <p>
               <IoIosNotificationsOutline className="icon" /> Notification
             </p>
-            <p>
+            <p onClick={()=>{displaySessionTimeScreen()}}>
               <AiOutlineSetting className="icon" /> Session Time
             </p>
             <p>
@@ -64,7 +99,7 @@ export default function Trainer_profile() {
                 </button>
               </div>
               <p className="about">ABOUT</p>
-              <p className="about-text">
+              <p id="bio" className="about-text">
                 Physical fitness is a state of health and well-being and, more
                 specifically, the ability to perform aspects of sports,
                 occupations and daily activites.

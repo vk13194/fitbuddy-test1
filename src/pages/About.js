@@ -1,8 +1,14 @@
 import React from "react";
-import About_CSS from "./styles/about.module.css"
+import About_CSS from "./styles/about.module.css";
+import image1 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-1.jpg";
+import image2 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-2.jpg";
+import image3 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-3.jpg";
+import image4 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-4.jpg";
+import image5 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-5.jpg";
+
 export default function About(){
     return (
-        <div className={About_CSS.abt_container}>
+        /*<div className={About_CSS.abt_container}>
             <div className={About_CSS.abt_fading_line_container_left}><div className={About_CSS.abt_fading_line_left}></div></div>
             <div className={About_CSS.abt_hexa_container}>
                 <div className={About_CSS.abt_hexa_top}></div>
@@ -21,6 +27,13 @@ export default function About(){
 •	Honesty & Integrity<br></br>
 </td></tr>
         </table> 
+        </div>*/
+        <div className={About_CSS.about_image_container}>
+            <img src={image1}></img>
+            <img src={image2}></img>
+            <img src={image3}></img>
+            <img src={image4}></img>
+            <img src={image5}></img>
         </div>
     );
 }

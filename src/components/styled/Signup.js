@@ -18,7 +18,7 @@ const Container = styled.div`
   }
   .decor_txt {
     position: absolute;
-    z-index: 9;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     font-family: Font_bold;
@@ -43,7 +43,13 @@ const Container = styled.div`
   @media (max-width:1040px){
     .decor_txt{
       margin: 4rem 0 0 7rem;
-      font-size: 2.8rem;    
+      font-size: 2.4rem;    
+    }
+  }
+  @media (max-width:880px){
+    .decor_txt{
+      margin: 2rem 0 0 4rem;
+      font-size: 2.2rem;    
     }
   }
   .decor_txt p {
@@ -193,6 +199,73 @@ const Container = styled.div`
     margin: 0 0.4rem;
     cursor: pointer;
   }
+  .btn {
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    zoom: 1.5;
+  }
+  
+  button {
+    border-radius: 10px;
+    background-color: grey;
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: white;
+  }
+  
+  .modal {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: scroll;
+  }
+  
+  .modal_content {
+    background-color: white;
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    width: 50%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  
+  .close {
+    color: Black;
+    float: right;
+  }
+  
+  .close:hover {
+    color: cyan;
+    cursor: pointer;
+  }
+  .center_bold{
+    font-weight: bold;
+    display: flex;
+  }
+  .center_bold_center{
+    font-weight: bold;
+  }
+
+  .simple{
+    display: flex;
+    text-align: left;
+  }
+  .bold_italiac{
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-style: italic;
+    display: flex; 
+    text-align: left; 
+  }
+  
 `;
 
 export { Container };

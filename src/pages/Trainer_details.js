@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import * as blobUtil from 'blob-util';
 import {
   HiOutlineArrowNarrowLeft,
   HiOutlineArrowNarrowRight,
@@ -22,7 +23,7 @@ export default function Trainer_details() {
   let height="";
   let weight="";
   let bio="";
-  let experience='{ "experiences" : [';
+  let experience='{';
   let history=useHistory();
 /*              <label>
               <p>
@@ -47,13 +48,15 @@ export default function Trainer_details() {
   "profilePhoto":link,
   "bio":bio
 }*/
+
 function addExperienceRow(event){
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
   var exp=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
   console.log(session);
   console.log(exp);
-  var expRow='{ "Session" :'+session+ ', "exp":'+exp+' },';
+  var expRow=session +":"+exp+',';
   experience=experience+expRow;
+  sessionStorage.setItem("experience",experience);
   console.log(expRow);
   console.log(experience);
   var backupLabel=document.getElementById("experienceRow");
@@ -79,11 +82,21 @@ function encodeImageFileAsURL(element) {
   var file = element.files[0];
   if(file!=undefined)
   {
-  console.log(URL.createObjectURL(file));
+  var filename=element.value.slice(12);
+  console.log(filename);
+  var extension=filename.substring(filename.lastIndexOf('.')+1, filename.length);
+  var type="image/"+extension.toLowerCase();
   document.getElementById("profile_label").style.backgroundImage="url("+URL.createObjectURL(file)+")";
   var reader = new FileReader();
-  reader.onloadend = function() {
-    setPhoto(reader.result.toString());
+  reader.onloadend = function(e) {
+    var arrayBuffer=e.target.result;
+    console.log(arrayBuffer);
+    /*var blob=blobUtil.arrayBufferToBlob(arrayBuffer,type);
+    console.log(blob);
+    setPhoto(blob);
+    console.log(blobUtil.createObjectURL(blob));
+    console.log(blob.text());*/
+    setPhoto(arrayBuffer.toString());
   }
   reader.readAsDataURL(file);
 }
@@ -170,8 +183,89 @@ console.log(sessionStorage.getItem("email").toString());
   }).then((res)=>res.json()).then((data)=>{console.log("hell");console.log(data);});   
 }*/
 const TrainerReg = () => {
-alert("test")
-console.log("fetching");
+
+  alert("test");
+if(document.getElementById("male_gender_button").className=="gender_selected"){
+  gender="Male";
+}
+else if(document.getElementById("female_gender_button").className=="gender_selected"){
+  gender="Female";
+}
+name=document.getElementById("name").value;
+country=document.getElementById("city_country_input").value.split(",")[0];
+city=document.getElementById("city_country_input").value.split(",")[1];
+phoneNumber=document.getElementById("mobileno").value;
+age=document.getElementById("age").value;
+weight=document.getElementById("weight").value;
+height=document.getElementById("height").value;
+experience=sessionStorage.getItem("experience");
+bio=document.getElementById("bio").value;
+
+if(gender=="") {
+  console.error("Select Gender");
+  document.getElementById("select_gender_error_label").value="Select Gender";
+  document.getElementById("select_gender_error_label").style.display="block";
+}
+else if(name=="") {
+  console.error("Name Required");
+  document.getElementById("name").focus();
+}
+else if(country=="" || city=="") {
+  if(country=="" && city=="") {
+    console.error("City and Country Required");
+    document.getElementById("city_country_input").focus();
+  }
+  else if(city=="") {
+    console.error("City Required");
+    document.getElementById("city_country_input").focus();
+  }
+  else {
+    console.error("Country Required");
+    document.getElementById("city_country_input").focus();
+  }
+}
+else if(phoneNumber==""){
+  console.error("Phone Number Required");
+  document.getElementById("mobileno").focus();
+}
+else if(bio==""){
+  console.error("Bio Required");
+  document.getElementById("bio").focus();
+}
+else{
+
+alert(JSON.stringify({
+  
+  "action":"dashboard_data",
+  "userid":sessionStorage.getItem("email"),
+  'password':sessionStorage.getItem("password"),
+  'name': name.toString(),
+'gender': gender.toString(),
+'country':country,
+'mobileno':phoneNumber.toString(),
+'age':age.toString(),
+'height':height.toString(),
+'weight':weight.toString(),
+'experience': experience.replace(/,\s*$/, "")+"}",
+'description':bio,
+
+}));
+if(document.getElementById("male_gender_button").className=="gender_selected"){
+  gender="Male";
+}
+else if(document.getElementById("female_gender_button").className=="gender_selected"){
+  gender="Female";
+}
+name=document.getElementById("name").value;
+country=document.getElementById("city_country_input").value.split(",")[0];
+city=document.getElementById("city_country_input").value.split(",")[1];
+phoneNumber=document.getElementById("mobileno").value;
+age=document.getElementById("age").value;
+weight=document.getElementById("weight").value;
+height=document.getElementById("height").value;
+experience=sessionStorage.getItem("experience");
+bio=document.getElementById("bio").value;
+
 fetch('http://3.137.209.222:8000/TrainerReg/', {
   method: 'POST',
   headers: {
@@ -185,26 +279,25 @@ fetch('http://3.137.209.222:8000/TrainerReg/', {
     "userid":sessionStorage.getItem("email"),
     'password':sessionStorage.getItem("password"),
     'name': name,
-  'gender': gender,
+    'gender': gender,
   'country':country,
-  'city':city,
   'mobileno':phoneNumber,
   'age':age,
   'height':height,
   'weight':weight,
-  'experience': experience.replace(/,\s*$/, "")+"]}",
-  'description':bio,
+  'experience': experience.replace(/,\s*$/, "")+"}",
+  'description': bio,
   'photo':photo
-  
   })
 }).then((response) => response.json())
 .then((responseJson) => {
   // If server response message same as Data Matched
   //setTobecollected(responseJson.Message);
-    if(responseJson.status=="200")
+  alert(responseJson.Message);  
+  if(responseJson.status=="200")
     {
       console.log(responseJson.data);
-      history.push("/trainer/profile");
+      //history.push("/trainer/profile");
     }
     else
     {
@@ -213,7 +306,9 @@ fetch('http://3.137.209.222:8000/TrainerReg/', {
 }).catch((error) => {
   // alert(error);
   console.error(error);
-}); 
+});
+}//else ends here
+document.getElementById("loading_label").style.display="block";
 console.log("out");
 }
 
@@ -241,7 +336,7 @@ console.log("out");
               else if(gender=="Male") {gender="Female";document.getElementById("male_gender_button").className="gender_unselected";event.target.className="gender_selected";}
             }} className="gender_unselected" value="Female">Female</button><br></br><label id="select_gender_error_label" style={{display:"none",color:"red"}}>Select Gender</label>
             <p>Name</p>
-            <input id="name_input" type="text" placeholder="Fit XXXXXX" onChange={(event)=>{name=event.target.value}}/>
+            <input id="name" type="text" placeholder="Fit XXXXXX" onChange={(event)=>{name=event.target.value}}/>
           </div>
           <div className="ctr_2">
             <p>Country, City</p>
@@ -252,7 +347,7 @@ console.log("out");
             }}type="text" placeholder="India, New Delhi" />
 
             <p>Mobile Number</p>
-            <input onChange={(event)=>{phoneNumber=event.target.value}} type="text" placeholder="+91 7800000000" />
+            <input id="mobileno" onChange={(event)=>{phoneNumber=event.target.value}} type="text" placeholder="+91 7800000000" />
           </div>
         </div>
       </TextInputs>
@@ -262,15 +357,15 @@ console.log("out");
             <div className="row_1">
               <label>
                 <p>Age</p>
-                <input placeholder="25" type="number" onChange={(event)=>{age=event.target.value}}/>
+                <input id="age" placeholder="25" type="number" onChange={(event)=>{age=event.target.value}}/>
               </label>
               <label>
                 <p>Height</p>
-                <input placeholder="170cm" type="number" onChange={(event)=>{height=event.target.value}}/>
+                <input id="height" placeholder="170cm" type="number" onChange={(event)=>{height=event.target.value}}/>
               </label>
               <label>
                 <p>Weight</p>
-                <input placeholder="50kg" type="number" onChange={(event)=>{weight=event.target.value}}/>
+                <input id="weight" placeholder="50kg" type="number" onChange={(event)=>{weight=event.target.value}}/>
               </label>
             </div>
 
@@ -298,7 +393,7 @@ console.log("out");
           </div>
           <label className="label_txtarea">
             <p>Add. Bio. (150-300 words)</p>
-            <textarea onChange={(event)=>{bio=event.target.value}} placeholder="“A certified fitness professional specializing in personal training and weight loss and serves clients in the greater Dallas area. He is accredited with the American Council of Exercise and the National Academy of Sports Medicine.”" />
+            <textarea id="bio" onChange={(event)=>{bio=event.target.value}} placeholder="“A certified fitness professional specializing in personal training and weight loss and serves clients in the greater Dallas area. He is accredited with the American Council of Exercise and the National Academy of Sports Medicine.”" />
           </label>
         </div>
         <div className="bottom_left_ctr">
@@ -315,6 +410,7 @@ console.log("out");
             </label>
             <input id="file-upload" type="file" accept="image/*" onChange={()=>{encodeImageFileAsURL(document.getElementById("file-upload"));}}/>
           </ProfileImage>
+          <label id="loading_label" style={{"display":"none"}}>Please wait Uploading....</label>
           <TickCtr onClick={()=>{TrainerReg()}}>
             <TiTick />
           </TickCtr>

@@ -268,7 +268,7 @@ export default function Home() {
   const Carousel = useRef();
   const card_data = [
     {
-      label: "Stength Workouts",
+      label: "Strength Workouts",
       description:
         "Strength workouts for increasing strength, controlling body fat and enhancing quality of life",
       trainer_image:
