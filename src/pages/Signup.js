@@ -101,7 +101,33 @@ export default function Signup() {
 */
 const CheckLogin = () => {
   if(document.getElementsByName("type")[0].checked==true){
-
+    fetch('http://3.137.209.222:8000/UserLogin/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'  
+  },
+  body: JSON.stringify({  
+    "action":"dashboard_data",
+    "userid":document.getElementById("email").value,
+    'password':document.getElementById("password").value
+  })
+  }).then((response) => response.json())
+      .then((responseJson) => {
+        sessionStorage.setItem("email",document.getElementById("email").value);
+        sessionStorage.setItem("password",document.getElementById("password").value);
+        console.log(responseJson);
+          if(responseJson.Message=="Login Successfully")
+          {
+          history.push("/user/profile");
+          }
+          else if(responseJson.status="404"){
+            history.push("/signup/user");
+          }
+      }).catch((error) => {
+        console.error(error);
+      });
+  
   }
   else if(document.getElementsByName("type")[1].checked==true){
 

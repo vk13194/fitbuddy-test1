@@ -97,6 +97,7 @@ function encodeImageFileAsURL(element) {
     console.log(blobUtil.createObjectURL(blob));
     console.log(blob.text());*/
     setPhoto(arrayBuffer.toString());
+    console.log(arrayBuffer.toString());
   }
   reader.readAsDataURL(file);
 }
@@ -293,11 +294,10 @@ fetch('http://3.137.209.222:8000/TrainerReg/', {
 .then((responseJson) => {
   // If server response message same as Data Matched
   //setTobecollected(responseJson.Message);
-  alert(responseJson.Message);  
   if(responseJson.status=="200")
     {
       console.log(responseJson.data);
-      //history.push("/trainer/profile");
+      history.push("/trainer/profile");
     }
     else
     {

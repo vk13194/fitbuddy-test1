@@ -198,44 +198,59 @@ function VideoCtr() {
             </a>
 
 */
-function checkStatus(data){
+function checkStatus(responseJson,type){
   console.log("check status");
-  if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
-  else if(data.success == false) 
-  {
-    var errorLabel=document.getElementById("loginErrorLabel");
-    errorLabel.innerHTML=(data.error);
-    errorLabel.hidden=false;
+  //if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
+  sessionStorage.setItem("email",document.getElementById("email").value);
+  sessionStorage.setItem("password",document.getElementById("password").value);
+  console.log(responseJson);
+    if(type=="trainer")
+    {
+    if(responseJson.Message=="Login Successfully") document.getElementById("redirectToTrainerProfileButton").click();
+    else {
+      var errorLabel=document.getElementById("loginErrorLabel");
+      errorLabel.innerHTML=(responseJson.Message);
+      errorLabel.hidden=false;    
+    }
   }
-  if(data.success==null)
-  {
-  console.log(localStorage.getItem("token"));
-  console.log(loginEmail);
-  var payload=localStorage.getItem("token").split(".")[1];
-  var decoded=atob(payload);
-  var result=JSON.parse(decoded);
-  console.log(result+".."+result.role);
-  if(result.role == "customer")
-  {
-    document.getElementById("redirectToUserProfileButton").click();
+    else if(type=="user")
+    {
+      if(responseJson.Message=="Login SuccessFully") document.getElementById("redirectToUserProfileButton").click();
+      else {
+        var errorLabel=document.getElementById("loginErrorLabel");
+        errorLabel.innerHTML=(responseJson.Message);
+        errorLabel.hidden=false;    
+      }
+    }
   }
-  else if(result.role == "trainer")
-  {
-    document.getElementById("redirectToTrainerProfileButton").click();
-  }
-}
-}
 function checkForAuthenticity(event){
-fetch("https://staging-fitbuddy.herokuapp.com/api/auth/login",{
-    method: "POST",
+  fetch('http://3.137.209.222:8000/TrainerLogin/', {
+    method: 'POST',
     headers: {
-      "Content-type": "application/json" 
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'  
     },
-    body : JSON.stringify({
-      "email" : loginEmail.trim(),
-      "password" : loginPassword.trim()
+    body: JSON.stringify({  
+      "action":"dashboard_data",
+      "userid":document.getElementById("email").value,
+      'password':document.getElementById("password").value
     })
-  }).then((res)=>res.json()).then((data)=>checkStatus(data));
+    }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"trainer")});
+  
+  fetch('http://3.137.209.222:8000/UserLogin/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'  
+      },
+      body: JSON.stringify({  
+        "action":"dashboard_data",
+        "userid":document.getElementById("email").value,
+        'password':document.getElementById("password").value
+      })
+      }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"user")});
+    
+
 }
 
 export default function Home() {
@@ -592,11 +607,11 @@ export default function Home() {
             <p>7 DAYS FREE TRIAL</p>
             <div className={home.trial_inp}>
               <AiOutlineMessage color="grey" />
-              <input onChange={(event)=> {loginEmail =(event.target.value)}} type="text" placeholder="Email or Mobile number" />
+              <input id="email" onChange={(event)=> {loginEmail =(event.target.value)}} type="text" placeholder="Email or Mobile number" required/>
             </div>
             <div className={home.trial_inp}>
               <FaRegUserCircle color="grey" />
-             <input onChange={(event)=> {loginPassword=(event.target.value)}} type="password" placeholder="Password" required/>
+             <input id="password" onChange={(event)=> {loginPassword=(event.target.value)}} type="password" placeholder="Password" required/>
             </div>
             <label id="loginErrorLabel" className={home.login_error_label} hidden="true"></label>
             <button onClick={(event) =>{checkForAuthenticity(event)}} className={home.trial_login}>Login</button>

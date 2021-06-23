@@ -9,6 +9,10 @@ import { BiDumbbell } from "react-icons/bi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useHistory } from "react-router";
+/*
+After name --
+            <p className="designation">D.O.B</p>
+*/
 function checkStatus(data)
 {
   console.log(data);
@@ -17,36 +21,45 @@ function checkStatus(data)
 }
 export default function User_profile() {
   let history=useHistory();
-  let token=localStorage.getItem("token");
   console.log("Ran");
-  if(token==null) 
-  {
-    alert("You need to log in First...");
-    history.replace("/");
-  }
-  else
-  {
-    var link="https://staging-fitbuddy.herokuapp.com/api/customers/current/info";
-    fetch(link,{
-    method: "GET",
+  fetch('http://3.137.209.222:8000/UserLogin/', {
+    method: 'POST',
     headers: {
-      "Content-type": "application/json",
-      "x-access-token":token
-    }
-  }).then((res)=>res.json()).then((data)=>checkStatus(data));
-  }
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'  
+    },
+    body: JSON.stringify({  
+      "action":"dashboard_data",
+      "userid":sessionStorage.getItem("email"),
+      'password':sessionStorage.getItem("password")
+    })
+    }).then((response) => response.json())
+        .then((responseJson) => {
+          console.log(responseJson);
+          if(responseJson.Message=="Login Successfully")
+          {
+          document.getElementById("user_name").innerHTML=responseJson.data[0].name;
+          document.getElementById("user_image").src=responseJson.data[0].photo;
+          }
+          else if(responseJson.status="404"){
+            console.error("Some Error")
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+  
   return (
     <div>
       <Sidebar>
         <div className="content">
           <img
+            id="user_image"
             src="https://www.verywellfit.com/thmb/U4ktWEzPgsf2xaj0ZouRF7UyPIk=/500x350/filters:no_upscale():max_bytes(150000):strip_icc()/serious-man-training-upper-body-using-fly-machine-1060869384-0effce7eff3044289055fcd16a9c6788.jpg"
             alt="profile"
             className="profile"
           />
           <div>
-            <p className="name">User Name</p>
-            <p className="designation">D.O.B</p>
+            <p id="user_name" className="name">User Name</p>
           </div>
           <div className="options">
             <p>

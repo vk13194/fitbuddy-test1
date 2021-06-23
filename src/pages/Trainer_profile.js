@@ -8,8 +8,11 @@ import { BsPlay, BsGraphUp } from "react-icons/bs";
 import { BiDumbbell } from "react-icons/bi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 export default function Trainer_profile() {
+  const history=useHistory();
+  console.log(sessionStorage.getItem('email'));
   fetch('http://3.137.209.222:8000/TrainerLogin/', {
     method: 'POST',
     headers: {
@@ -25,7 +28,6 @@ export default function Trainer_profile() {
         .then((responseJson) => {
             // If server response message same as Data Matched
           //setTobecollected(responseJson.Message);
-          console.log(responseJson);
           console.log(responseJson.data[0]);
             if(responseJson.Message=="Login Successfully")
             {
@@ -42,6 +44,11 @@ export default function Trainer_profile() {
         });
   function displaySessionTimeScreen(){
     
+  }
+  function logout(){
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("password");
+    history.replace("/");
   }
   
   return (
@@ -75,7 +82,7 @@ export default function Trainer_profile() {
               <BsGraphUp className="icon" /> Share
             </p>
           </div>
-          <p className="logoutbtn">
+          <p className="logoutbtn" onClick={()=>logout()}>
             <BiDumbbell className="logout-ico" />
             Log out
           </p>
