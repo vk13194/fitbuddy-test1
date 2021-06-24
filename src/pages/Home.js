@@ -246,8 +246,6 @@ const [isuser,setisuser]=useState(true);
           setisuser(false);
       }
       }
-      
-      
     
     }
   function checkForAuthenticity(event){
