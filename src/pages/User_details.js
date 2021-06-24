@@ -95,6 +95,7 @@ else if(data.status=="404")
 {
   cleanupData();
   history.push("/");
+  //something
 }
 }
 function cleanupData()
