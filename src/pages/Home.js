@@ -198,62 +198,10 @@ function VideoCtr() {
             </a>
 
 */
-function checkStatus(responseJson,type){
-  console.log("check status");
-  //if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
-  sessionStorage.setItem("email",document.getElementById("email").value);
-  sessionStorage.setItem("password",document.getElementById("password").value);
-  console.log(responseJson);
-    if(type=="trainer")
-    {
-    if(responseJson.Message=="Login Successfully") document.getElementById("redirectToTrainerProfileButton").click();
-    else {
-      var errorLabel=document.getElementById("loginErrorLabel");
-      errorLabel.innerHTML=(responseJson.Message);
-      errorLabel.hidden=false;    
-    }
-  }
-    else if(type=="user")
-    {
-      if(responseJson.Message=="Login SuccessFully") document.getElementById("redirectToUserProfileButton").click();
-      else {
-        var errorLabel=document.getElementById("loginErrorLabel");
-        errorLabel.innerHTML=(responseJson.Message);
-        errorLabel.hidden=false;    
-      }
-    }
-  }
-function checkForAuthenticity(event){
-  fetch('http://3.137.209.222:8000/TrainerLogin/', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'  
-    },
-    body: JSON.stringify({  
-      "action":"dashboard_data",
-      "userid":document.getElementById("email").value,
-      'password':document.getElementById("password").value
-    })
-    }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"trainer")});
-  
-  fetch('http://3.137.209.222:8000/UserLogin/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'  
-      },
-      body: JSON.stringify({  
-        "action":"dashboard_data",
-        "userid":document.getElementById("email").value,
-        'password':document.getElementById("password").value
-      })
-      }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"user")});
-    
-
-}
 
 export default function Home() {
+  const [istrainer,setistrainer]=useState(true);
+const [isuser,setisuser]=useState(true);
   let history = useHistory();
   var token=localStorage.getItem("token");
   console.log(token);
@@ -269,6 +217,69 @@ export default function Home() {
       history.replace("/trainer/profile");
     }
   }
+  function checkStatus(responseJson,type){
+    console.log("check status");
+    //if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
+    sessionStorage.setItem("email",document.getElementById("email").value);
+    sessionStorage.setItem("password",document.getElementById("password").value);
+    console.log(responseJson);
+  
+  if(type=="trainer")
+      {
+      if(responseJson.status=="200") {
+        setistrainer(true);
+        document.getElementById("redirectToTrainerProfileButton").click();
+      }
+      if(responseJson.status=="404")
+      {
+        setistrainer(false);
+      }
+    }
+      else if(type=="user")
+      {
+        if(responseJson.status=="200") {
+          setisuser(true);
+          document.getElementById("redirectToUserProfileButton").click();
+      }
+        if(responseJson.status=="404")
+        {
+          setisuser(false);
+      }
+      }
+      
+      
+    
+    }
+  function checkForAuthenticity(event){
+    fetch('http://3.137.209.222:8000/TrainerLogin/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'  
+      },
+      body: JSON.stringify({  
+        "action":"dashboard_data",
+        "userid":document.getElementById("email").value,
+        'password':document.getElementById("password").value
+      })
+      }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"trainer")});
+    
+    fetch('http://3.137.209.222:8000/login/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'  
+        },
+        body: JSON.stringify({  
+          "action":"dashboard_data",
+          "userid":document.getElementById("email").value,
+          'password':document.getElementById("password").value
+        })
+        }).then((response) => response.json()).then((responseJson) => {checkStatus(responseJson,"user")});
+      
+        
+  }
+  
 
     function CONTAINER_STYLE() {
     return {
@@ -615,7 +626,7 @@ export default function Home() {
               <FaRegUserCircle color="grey" />
              <input id="password" onChange={(event)=> {loginPassword=(event.target.value)}} type="password" placeholder="Password" required/>
             </div>
-            <label id="loginErrorLabel" className={home.login_error_label} hidden="true"></label>
+            {!(istrainer && isuser) && <label id="loginErrorLabel" className={home.login_error_label}>Not Found</label>}
             <button onClick={(event) =>{checkForAuthenticity(event)}} className={home.trial_login}>Login</button>
             <Link to="/user/profile"><button id="redirectToUserProfileButton" hidden="true"></button></Link>
             <Link to="/trainer/profile"><button id="redirectToTrainerProfileButton" hidden="true"></button></Link>

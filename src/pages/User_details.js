@@ -156,15 +156,14 @@ function cleanupData()
              "Content-type": "application/json" 
               },
               body : JSON.stringify({
-             "email": sessionStorage.getItem("email"),
+             "userid": sessionStorage.getItem("email"),
              "password": sessionStorage.getItem("password"),
              "name": name,
                 "age": age,
-                 "mobileNumber": mobileNumber,
+                 "mobileno": mobileNumber,
              "gender": gender,
               "weight": weight,
              "height": height,
-             "city": city,
               "country": country,
               "photo": photo
               })}).then((res)=>res.json()).then((data)=>{evaluateResult(data)}).catch((error)=>{console.error(error);});
