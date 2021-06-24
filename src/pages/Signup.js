@@ -101,7 +101,7 @@ export default function Signup() {
 */
 const CheckLogin = () => {
   if(document.getElementsByName("type")[0].checked==true){
-    fetch('http://3.137.209.222:8000/UserLogin/', {
+    fetch('http://3.137.209.222:8000/login/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',

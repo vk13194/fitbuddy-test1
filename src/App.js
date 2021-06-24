@@ -18,6 +18,9 @@ import Pricing_details from "./pages/Pricing_details";
 import Otp_screen from "./pages/Otp_screen";
 import Session_timing from "./pages/Session_timing";
 import Admin_banner_panel from "./pages/Admin_banner_panel";
+import Privacy_policy from "./pages/Privacy_policy";
+import Terms_and_conditions from "./pages/Terms_and_conditions";
+
 function App() {
  
  return (
@@ -52,7 +55,9 @@ function App() {
           <Route exact path="/pricingdetails" component={Pricing_details}/>
           <Route exact path="/otpscreen" component={Otp_screen}/>
           <Route exact path="/sessiontiming" component={Session_timing}/>
-          <Route exate path="/admin_banner_panel" component={Admin_banner_panel}/>
+          <Route exact path="/admin_banner_panel" component={Admin_banner_panel}/>
+          <Route exact path="/privacy_policy" component={Privacy_policy}/>
+          <Route exact path="/terms_and_conditions" component={Terms_and_conditions}/>
         </Switch>
       </Router>
     </div>

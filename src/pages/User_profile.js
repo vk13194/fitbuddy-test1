@@ -22,7 +22,7 @@ function checkStatus(data)
 export default function User_profile() {
   let history=useHistory();
   console.log("Ran");
-  fetch('http://3.137.209.222:8000/UserLogin/', {
+  fetch('http://3.137.209.222:8000/login/', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

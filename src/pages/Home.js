@@ -281,6 +281,7 @@ export default function Home() {
     };
   }
   const Carousel = useRef();
+    
   const card_data = [
     {
       label: "Strength Workouts",
@@ -494,6 +495,7 @@ export default function Home() {
     */},
   ];
   const [rendermenu, setrendermenu] = useState(false);
+  
   return (
     <div className={home.main_ctr}>
       <div className={home.vw_1}>
@@ -850,6 +852,15 @@ export default function Home() {
               alt="client"
             />
             </a>
+            <a style={{ cursor: "pointer" }}
+              target="_blank"
+              href="https://iiitdic.in/">
+            <img
+              className={home.client_logos}
+              src="https://cdn.shortpixel.ai/client/q_lqip,ret_wait,w_183,h_60/https://iiitdic.in/wp-content/uploads/2020/04/incubation.png"
+              alt="client"
+            />
+            </a>
             
           </Marquee>
         </div>
@@ -869,7 +880,7 @@ export default function Home() {
                 color="#a4ba33"
                 size={window.innerWidth < 650 ? "1rem" : "2.1rem"}
               />
-              &nbsp;&nbsp;+91 9910074552
+              &nbsp;&nbsp;+91 8178094692
             </div>
 
             <p>
@@ -925,15 +936,18 @@ export default function Home() {
             <img src="/assets/payment_options.png" alt="payment options" />
           </div>
           <div className={home.vw_5_s3_r3}>
-            <p>Terms & Conditions</p>
+            <p onClick={()=>history.push("/terms_and_conditions")}>Terms & Conditions</p>
             <p style={window.innerWidth < 650 ? {} : { paddingRight: "8rem" }}>
               Refund Policy
             </p>
-            <p>Privacy Policy</p>
+            <p onClick={()=>history.push("/privacy_policy")}>Privacy Policy</p>
+            
+
           </div>
         </div>
       </div>
-    </div>
+      
+      </div>
   );
 }
 
