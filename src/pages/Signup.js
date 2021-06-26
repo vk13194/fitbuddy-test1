@@ -52,7 +52,7 @@ export default function Signup() {
 
     }
     else if(document.getElementsByName("type")[1].checked==true){
-      fetch("http://3.137.209.222:8000/Particulartrainer/",{
+      fetch("https://3.137.209.222:8000/Particulartrainer/",{
         method: "POST",
         headers: {
           "Content-type": "application/json" 
