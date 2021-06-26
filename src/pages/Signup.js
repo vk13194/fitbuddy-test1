@@ -5,7 +5,6 @@ import Trainer_details from "./Trainer_details";
 import User_details from "./User_details";
 import { BsChatSquareDots } from "react-icons/bs";
 import { RiLockPasswordLine } from "react-icons/ri";
-import MetaTags from 'react-meta-tags';
 
 import extra from "./styles/extra.css";
 
