@@ -184,7 +184,7 @@ const togglePop2 = () => {
         Let's Begin Your
         <div style={{ display: "flex" }}>
           <p style={{ textShadow: "4px 4px 4px #0000004A" }}>FITBUDDY&nbsp;</p>
-          Journey
+          Journey1
         </div>
       </p>
       <img className="img_dec" src="/assets/login_img.png" alt="" />
