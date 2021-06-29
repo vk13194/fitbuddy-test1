@@ -53,7 +53,7 @@ export default function Signup() {
 
     }
     else if(document.getElementsByName("type")[1].checked==true){
-      fetch("https://3.137.209.222:8000/Particulartrainer/",{
+      fetch("http://3.137.209.222:8000/Particulartrainer/",{
         method: "POST",
         headers: {
           "Content-type": "application/json" 
@@ -102,7 +102,7 @@ export default function Signup() {
 */
 const CheckLogin = () => {
   if(document.getElementsByName("type")[0].checked==true){
-    fetch('https://3.137.209.222:8000/login/', {
+    fetch('http://3.137.209.222:8000/login/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -132,7 +132,7 @@ const CheckLogin = () => {
   }
   else if(document.getElementsByName("type")[1].checked==true){
 
-    fetch('https://3.137.209.222:8000/TrainerLogin/', {
+    fetch('http://3.137.209.222:8000/TrainerLogin/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
