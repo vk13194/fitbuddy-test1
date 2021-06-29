@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import home from "./styles/home.module.css";
 import { useHistory } from "react-router-dom";
+import Navbar from "./Navbar";
 export default function Terms_and_conditions(){
   const history=useHistory();
     return (
+      <>
+      <Navbar/>
         <div className={home.modal}>
             <div style={{"display":"flex","padding":"20px","cursor":"pointer"}}>
               <img
@@ -222,5 +225,6 @@ Last updated June 2021.</p>
 </div>
         </div>
       </div>
+      </>
     )
 }

@@ -7,7 +7,7 @@ import { BsChatSquareDots } from "react-icons/bs";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 import extra from "./styles/extra.css";
-
+import Navbar from "./Navbar";
 import {
   AiOutlineDown,
   AiFillGoogleCircle,
@@ -23,21 +23,13 @@ export default function Signup() {
   const [seen, setSeen]= useState(false);
   const [seen2, setSeen2] =useState(false);
   const getStatus=(data,type)=>{
-    //if(data.token!=null) localStorage.setItem("token",data.token);
-    /*if(localStorage.getItem("token")!=null) history.replace("/user/profile");
-    else
-    {
-      istrainer ? history.push("/signup/trainer") : history.push("/signup/user");
-    }*/
     if(type=="trainer"){
     if(data.status=="404"){
-      //The Trainer Doesn't exist and we can further move on to next step
       history.push("/signup/trainer");
     }
     else if(data.status="200"){
       console.log(data.data);
       alert("Trainer Already Exists !!")
-      // Redirect it to The trainer page and Fill the data.
     }
     }
     else if(type=="user"){
@@ -53,7 +45,7 @@ export default function Signup() {
 
     }
     else if(document.getElementsByName("type")[1].checked==true){
-      fetch("http://3.137.209.222:8000/Particulartrainer/",{
+      fetch("https://3.137.209.222:8000/Particulartrainer/",{
         method: "POST",
         headers: {
           "Content-type": "application/json" 
@@ -78,31 +70,10 @@ export default function Signup() {
     event.target.value == "trainer" ? settrainer(true) : settrainer(false);
     document.getElementById("select_type_label").style.display="none";
   };
-  /*          {istrainer && (
-            <div
-              className="dropdown"
-              onClick={() => setrendermenu(!rendermenu)}
-            >
-              <p style={{ color: "#767676" }}>{drpdown}</p>
-              <AiOutlineDown className="dropdown_ico" />
-              {rendermenu && (
-                <div className="dropdown_menu">
-                  <div className="options">
-                    <p onClick={(event) => onMenuClick(event)}>
-                      indivisual or company
-                    </p>
-                    <p onClick={(event) => onMenuClick(event)}>second option</p>
-                    <p onClick={(event) => onMenuClick(event)}>third option</p>
-                    <p onClick={(event) => onMenuClick(event)}>fourth option</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-*/
+  
 const CheckLogin = () => {
   if(document.getElementsByName("type")[0].checked==true){
-    fetch('http://3.137.209.222:8000/login/', {
+    fetch('https://3.137.209.222:8000/login/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -132,7 +103,7 @@ const CheckLogin = () => {
   }
   else if(document.getElementsByName("type")[1].checked==true){
 
-    fetch('http://3.137.209.222:8000/TrainerLogin/', {
+    fetch('https://3.137.209.222:8000/TrainerLogin/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -179,7 +150,10 @@ const togglePop2 = () => {
     setSeen2(!seen2);
   }
   return (
+    <>
+     <Navbar />
     <Container>
+     
       <p className="decor_txt">
         Let's Begin Your
         <div style={{ display: "flex" }}>
@@ -219,9 +193,11 @@ const togglePop2 = () => {
             </div>
             <p id="select_type_label" style={{color:"red",display:"none"}}>Please Select Trainer or User</p>
           </form>
+
           <button className="continue" onClick={CheckLogin} type="button">
             CONTINUE
           </button>
+
           <p className="tc">
             By Continuing you agree to the <a id="terms_and_services" onClick={()=>{togglePop()}}>Terms of Services </a>
             &nbsp;and&nbsp;
@@ -662,5 +638,6 @@ Last updated June 2021.</p>
         </div>
       </div>  }
     </Container>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import image3 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-3.jpg";
 import image4 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-4.jpg";
 import image5 from "./styles/About_Us_fitbuddy_images/About_Us_fitbuddy-5.jpg";
 import { useHistory } from "react-router-dom";
-
+import Navbar from "./Navbar";
 export default function About(){
     const history=useHistory();
     return (
@@ -31,7 +31,9 @@ export default function About(){
 </td></tr>
         </table> 
         </div>*/
-        <div>
+        <>
+        {/* <div> */}
+            <Navbar/>
         <div style={{"position":"absolute","display":"flex","padding":"20px","cursor":"pointer"}}>
               <img
                 onClick={()=>history.push("/")}
@@ -49,6 +51,8 @@ export default function About(){
             <img src={image4}></img>
             <img src={image5}></img>
         </div>
-        </div>
-    );
+        {/* </div> */}
+    
+        </>
+        );
 }

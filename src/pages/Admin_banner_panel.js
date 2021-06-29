@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import admin from "./styles/admin.module.css"
+import Navbar from "./Navbar";
 export default function Admin_banner_panel(){
     const [homeBannerPC, setHomeBannerPC] = useState(false);
     const [homeBannerMobile, setHomeBannerMobile] = useState(false);
@@ -63,6 +64,8 @@ export default function Admin_banner_panel(){
         }
     }
 return(
+    <>
+    <Navbar/>
     <form onSubmit={(event)=>{uploadImage(event)}} className={admin.admin_outer_form}>
         <select className={admin.drop_down_list} onChange={(event)=>{somethingSelected(event)}}>
             <option selected>&#60;Select Banner to Change&#62;</option>
@@ -93,5 +96,6 @@ return(
         }
 
     </form>
+    </>
 )
 }

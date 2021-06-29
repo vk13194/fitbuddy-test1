@@ -1,10 +1,12 @@
 import react from "react";
 import os from "./styles/otp.screen.module.css";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
 export default function Otp_screen(){
     let something="xxxxxxxxxx"
     return (
+        <>
+        <Navbar/>
         <div className={os.main_frame}>
             <div className={os.fitbuddy_logo_container}><img src="/assets/logo.png"></img></div>
             <div className={os.otp_enter_message}><p>Please enter the one time password we just sent to {something} to continue</p></div>
@@ -22,5 +24,6 @@ export default function Otp_screen(){
             </Link>
         </div>
         </div>
+        </>
     );
 }

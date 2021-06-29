@@ -9,6 +9,7 @@ import { BiDumbbell } from "react-icons/bi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useHistory } from "react-router";
+import Navbar from "./Navbar";
 
 export default function Trainer_profile() {
   const history=useHistory();
@@ -53,6 +54,7 @@ export default function Trainer_profile() {
   
   return (
     <div>
+      <Navbar/>
       <Sidebar>
         <div className="content">
           <img

@@ -20,11 +20,11 @@ import Session_timing from "./pages/Session_timing";
 import Admin_banner_panel from "./pages/Admin_banner_panel";
 import Privacy_policy from "./pages/Privacy_policy";
 import Terms_and_conditions from "./pages/Terms_and_conditions";
-
 function App() {
  
  return (
-    <div className="App">
+    <>
+      
       <Router>
         <Switch>
           <Route exact path="/" component={Home}></Route>
@@ -50,17 +50,17 @@ function App() {
           <Route exact path="/user/profile" component={User_profile} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signup/trainer" component={Trainer_details} />
-          <Route exact path="/signup/user" component={User_details} />
+          <Route exact path="/signup/user_details" component={User_details} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/pricingdetails" component={Pricing_details}/>
-          <Route exact path="/otpscreen" component={Otp_screen}/>
-          <Route exact path="/sessiontiming" component={Session_timing}/>
+          <Route exact path="/pricing_details" component={Pricing_details}/>
+          <Route exact path="/otp_screen" component={Otp_screen}/>
+          <Route exact path="/session_timing" component={Session_timing}/>
           <Route exact path="/admin_banner_panel" component={Admin_banner_panel}/>
           <Route exact path="/privacy_policy" component={Privacy_policy}/>
           <Route exact path="/terms_and_conditions" component={Terms_and_conditions}/>
         </Switch>
       </Router>
-    </div>
+    </>
   );
 }
 

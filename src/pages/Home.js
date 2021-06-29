@@ -7,6 +7,7 @@ import Carousels from "react-elastic-carousel";
 import Marquee from "react-fast-marquee";
 import { useInView } from "react-intersection-observer";
 import { useHistory, Link } from "react-router-dom";
+import Navbar from "./Navbar";
 import {
   FaRegUserCircle,
   FaFacebookSquare,
@@ -506,7 +507,10 @@ const [isuser,setisuser]=useState(true);
   const [rendermenu, setrendermenu] = useState(false);
   
   return (
+    <>
+    <Navbar />
     <div className={home.main_ctr}>
+     
       <div className={home.vw_1}>
         <div className={home.fixed_ctr}>
           <Link to="/signup" style={{ textDecoration: "none" }}>
@@ -957,6 +961,7 @@ const [isuser,setisuser]=useState(true);
       </div>
       
       </div>
+      </>
   );
 }
 

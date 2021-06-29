@@ -2,18 +2,9 @@ import { Checkbox, Radio } from "@material-ui/core";
 import React from "react";
 import PD from "./styles/pricingdetails.module.css";
 import ScrollMenu from 'react-horizontal-scrolling-menu';
-
-/*
-          <div className={PD.exercise_sliding_bar}>
-                        <button className={PD.sb_left_arrow_button}>&#10094;</button>
-                        <div className={PD.type_exercise_container}>
-                        <button className={PD.exercise_button}>Yoga</button>
-                        <button className={PD.exercise_button}>Zumba</button>
-                        <button className={PD.exercise_button}>Something</button>
-                        </div><button className={PD.sb_right_arrow_button}>&#10095;</button>
-                    </div>
-*/ 
+import Navbar from "./Navbar";
 export default function Pricing_details(){
+  
     function scrollToTop()
     {
         document.getElementById("pdFrame3").scrollIntoView(true);
@@ -34,6 +25,8 @@ export default function Pricing_details(){
     <button className={PD.exercise_button} key="12">Othssser12</button>];
 ;
     return (
+        <>
+        <Navbar/>
         <div className={PD.main_frame}>
             <div className={PD.pd_frame_1}>
                 <p className={PD.pricing_text}>PRICING</p>
@@ -197,5 +190,6 @@ export default function Pricing_details(){
                 </div>
             </div>
         </div>
+        </>
     );
 }

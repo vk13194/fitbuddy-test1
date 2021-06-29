@@ -1,7 +1,6 @@
 import React from "react";
 import { Landing, Card } from "../components/styled/trainer/Landing";
 import { VideoCtr } from "./Home";
-
 export default function Trainer_Landing() {
   return (
     <>

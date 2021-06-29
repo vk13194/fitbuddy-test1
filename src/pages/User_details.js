@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import { useHistory, Link } from "react-router-dom";
+import Navbar from "./Navbar.js";
 import {
   TextInputs,
   User,
@@ -169,6 +170,8 @@ function cleanupData()
               })}).then((res)=>res.json()).then((data)=>{evaluateResult(data)}).catch((error)=>{console.error(error);});
               }
   return (
+    <>
+    <Navbar/>
     <User>
       <TextInputs>
         <div className="head">
@@ -263,5 +266,6 @@ function cleanupData()
         </div>
       </div>
     </User>
+    </>
   );
 }

@@ -9,10 +9,7 @@ import { BiDumbbell } from "react-icons/bi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useHistory } from "react-router";
-/*
-After name --
-            <p className="designation">D.O.B</p>
-*/
+import Navbar from "./Navbar";
 function checkStatus(data)
 {
   console.log(data);
@@ -50,6 +47,7 @@ export default function User_profile() {
   
   return (
     <div>
+      <Navbar/>
       <Sidebar>
         <div className="content">
           <img

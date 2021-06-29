@@ -1,9 +1,12 @@
 import React from "react";
 import home from "./styles/home.module.css";
 import { useHistory } from "react-router-dom";
+import Navbar from "./Navbar";
 export default function Privacy_policy(){
   const history=useHistory();
     return (
+      <>
+      <Navbar/>
         <div className={home.modal}>
           <div style={{"display":"flex","padding":"20px","cursor":"pointer"}}>
               <img
@@ -222,5 +225,6 @@ export default function Privacy_policy(){
   </div>
         </div>
       </div>    
+      </>
     )
 }

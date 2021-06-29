@@ -3,6 +3,7 @@ import { getNodeText } from "@testing-library/dom";
 import {react,useState} from "react";
 import { FaNetworkWired } from "react-icons/fa";
 import st from "./styles/session.timing.module.css";
+import Navbar from "./Navbar";
 export default function Session_timing(){
 
     const [timeStatus, setTimeStatus] = useState(false);
@@ -388,6 +389,8 @@ function addNewRow()
                 */
             
    return (
+       <>
+       <Navbar/>
         <div className={st.main_frame}>
             <table id="mainTable" className={st.session_timing_table}>
                 <tr>
@@ -427,5 +430,6 @@ function addNewRow()
                 </tr>
             </table>
         </div>
+        </>
     );
 }

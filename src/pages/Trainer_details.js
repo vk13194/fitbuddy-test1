@@ -12,6 +12,7 @@ import {
 } from "../components/styled/Registration.js";
 import { TiTick } from "react-icons/ti";
 import {useHistory} from "react-router-dom";
+import Navbar from "./Navbar.js";
 export default function Trainer_details() {
   const [photo,setPhoto]= useState("");
   let gender="";
@@ -313,6 +314,8 @@ console.log("out");
 }
 
   return (
+    <>
+    <Navbar/>
     <Trainer>
       <TextInputs>
         <div className="head">
@@ -417,5 +420,6 @@ console.log("out");
         </div>
       </div>
     </Trainer>
+    </>
   );
 }
