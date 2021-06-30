@@ -508,7 +508,7 @@ const [isuser,setisuser]=useState(true);
   
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <div className={home.main_ctr}>
      
       <div className={home.vw_1}>
