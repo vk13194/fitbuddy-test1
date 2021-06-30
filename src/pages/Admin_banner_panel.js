@@ -94,7 +94,10 @@ export default function Admin_banner_panel() {
             <option>Home Screen Banners Mobile</option>
           </select>{" "}
           <br></br>
-          {homeBannerPC && (
+          {/* intially three carousels were there so the check box was made for carousel edit but now there are to be unlimited carousel
+          so commenting out the code below */}
+          {/* ----------------------------------------------------------------------------------------------------------------- */}
+          {/* {homeBannerPC && (
             <span id="homeBannerPCSpan">
               <input
                 type="radio"
@@ -121,8 +124,8 @@ export default function Admin_banner_panel() {
               <p style={{ display: "inline", lineHeight: "20px" }}>Banner 3 </p>
               &nbsp;&nbsp;
             </span>
-          )}
-          {homeBannerMobile && (
+          )} */}
+          {/* {homeBannerMobile && (
             <span id="homeBannerMobileSpan">
               <input
                 type="radio"
@@ -143,8 +146,8 @@ export default function Admin_banner_panel() {
               ></input>
               <p style={{ display: "inline" }}>Banner 3</p>
             </span>
-          )}
-          <br></br>
+          )} */}
+          {/* ------------------------------------------------------------------------------------------------------------- */}
           {(homeBannerMobile || homeBannerPC) && (
             <div>
               <input
