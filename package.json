@@ -26,6 +26,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxt --env.NODE_TLS_REJECT_UNAUTHORIZED=0",
     "start": "set HTTPS=false&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

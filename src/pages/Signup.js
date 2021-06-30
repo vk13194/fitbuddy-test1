@@ -105,10 +105,12 @@ const CheckLogin = () => {
 
     fetch('https://3.137.209.222:8000/TrainerLogin/', {
   method: 'POST',
+  // credentials: 'omit', 
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'  
   },
+  // referrerPolicy: 'no-referrer',
   body: JSON.stringify({  
     "action":"dashboard_data",
     "userid":document.getElementById("email").value,

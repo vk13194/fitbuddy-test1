@@ -5,7 +5,7 @@ import { GrCopy } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import Nav_admin from "../components/Nav_admin";
 import View_users from "./View_users";
-
+import Admin_banner_panel from "./Admin_banner_panel";
 const sessions = [
   {
     date: "2021-01-18",
@@ -128,6 +128,12 @@ export default function Admin_panel() {
           </table>
         </div>
       </div>
+      <hr />
+      <div className="sliderheader" style={{textAlign:'center'}} >
+        <h2>--:Change Slider Items:--</h2> 
+      </div>
+      <hr />
+      <Admin_banner_panel/>
     </>
   );
 }
