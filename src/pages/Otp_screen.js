@@ -2,6 +2,7 @@ import react from "react";
 import os from "./styles/otp.screen.module.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import Policiesfooter from "./Policiesfooter";
 export default function Otp_screen(){
     let something="xxxxxxxxxx"
     return (
@@ -24,6 +25,7 @@ export default function Otp_screen(){
             </Link>
         </div>
         </div>
+        <Policiesfooter/>
         </>
     );
 }

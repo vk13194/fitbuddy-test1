@@ -20,6 +20,7 @@ import Session_timing from "./pages/Session_timing";
 import Admin_banner_panel from "./pages/Admin_banner_panel";
 import Privacy_policy from "./pages/Privacy_policy";
 import Terms_and_conditions from "./pages/Terms_and_conditions";
+import Policiesfooter from "./pages/Policiesfooter";
 function App() {
  
  return (

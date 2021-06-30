@@ -2,6 +2,7 @@ import React from "react";
 import home from "./styles/home.module.css";
 import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
+import Policiesfooter from "./Policiesfooter";
 export default function Privacy_policy(){
   const history=useHistory();
     return (
@@ -25,7 +26,7 @@ export default function Privacy_policy(){
   website. We will post those changes here so that you will always know our policies regarding
   what information we gather, how we might use that information
   If you have any questions or concerns about our privacy policy, please send an e-mail
-  to admin@fitbuddy.co.in</p><br></br><br></br>
+  to   </p> <a href="mailto:admin@fitbuddy.co.in">admin@fitbuddy.co.in</a> <br></br><br></br> 
   <p className={home.center_bold}>SCOPE OF PRIVACY POLICY</p><br></br>
   <p className={home.simple}>This policy applies to your use of fitbuddy.co.in website, FitBuddy m-web and FitBuddy
   mobile application (collectively referred to as the “Platform”), owned and operated by ETrainers Analytics Wizard Pvt Ltd.
@@ -225,6 +226,7 @@ export default function Privacy_policy(){
   </div>
         </div>
       </div>    
+     
       </>
     )
 }

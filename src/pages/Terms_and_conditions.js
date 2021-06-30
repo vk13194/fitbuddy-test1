@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import home from "./styles/home.module.css";
 import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
+import Policiesfooter from "./Policiesfooter";
 export default function Terms_and_conditions(){
   const history=useHistory();
     return (
@@ -225,6 +226,7 @@ Last updated June 2021.</p>
 </div>
         </div>
       </div>
+      
       </>
     )
 }

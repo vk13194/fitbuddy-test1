@@ -3,6 +3,7 @@ import React from "react";
 import PD from "./styles/pricingdetails.module.css";
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Navbar from "./Navbar";
+import Policiesfooter from "./Policiesfooter";
 export default function Pricing_details(){
   
     function scrollToTop()
@@ -190,6 +191,7 @@ export default function Pricing_details(){
                 </div>
             </div>
         </div>
+        <Policiesfooter/>
         </>
     );
 }

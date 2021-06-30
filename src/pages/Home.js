@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 import { useInView } from "react-intersection-observer";
 import { useHistory, Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import Policiesfooter from "./Policiesfooter";
 import {
   FaRegUserCircle,
   FaFacebookSquare,
@@ -961,6 +962,7 @@ const [isuser,setisuser]=useState(true);
       </div>
       
       </div>
+      
       </>
   );
 }

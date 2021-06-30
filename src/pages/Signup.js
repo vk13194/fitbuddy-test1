@@ -5,7 +5,7 @@ import Trainer_details from "./Trainer_details";
 import User_details from "./User_details";
 import { BsChatSquareDots } from "react-icons/bs";
 import { RiLockPasswordLine } from "react-icons/ri";
-
+import Policiesfooter from "./Policiesfooter";
 import extra from "./styles/extra.css";
 import Navbar from "./Navbar";
 import {
@@ -640,6 +640,7 @@ Last updated June 2021.</p>
         </div>
       </div>  }
     </Container>
+    <Policiesfooter/>
     </>
   );
 }
