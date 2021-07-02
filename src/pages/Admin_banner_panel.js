@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import admin from "./styles/admin.module.css";
 export default function Admin_banner_panel() {
-  
+    const [submitdone,setsubmitdone]=useState(false)
   
   function handlesubmit(e){
     e.preventDefault();
@@ -19,6 +19,7 @@ export default function Admin_banner_panel() {
     }).then((res)=>{
       console.log(res);
       if(res.status==200){
+        setsubmitdone(true);
         myform.reset();
       }
     }).catch((error)=>{console.log('error->' ,error);})
@@ -52,7 +53,9 @@ export default function Admin_banner_panel() {
                 name="file"
                 style={{ marginTop: "10px", lineHeight: "15px" }}
                ></input>
-              
+              {
+                submitdone ==true? <h3>image uploaded</h3>:null
+              }
               <button
                 className={admin.banner_submission_button}
                 type="submit"
@@ -69,7 +72,6 @@ export default function Admin_banner_panel() {
                   boxShadow:'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
                 }}
               >
-                
                 Upload
               </button>
            
