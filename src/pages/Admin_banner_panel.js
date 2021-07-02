@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 export default function Admin_banner_panel() {
   const [homeBannerPC, setHomeBannerPC] = useState(false);
   const [homeBannerMobile, setHomeBannerMobile] = useState(false);
+
   function somethingSelected(event) {
     if (event.target.value == "Home Screen Banners PC") {
       setHomeBannerPC(true);
@@ -21,41 +22,27 @@ export default function Admin_banner_panel() {
     event.preventDefault();
     console.log("in");
     if (homeBannerMobile) {
-      var inputs = document
-        .getElementById("homeBannerMobileSpan")
-        .getElementsByTagName("input");
-      if (inputs[0].checked == true) {
-        console.log(inputs[0].value);
-        console.log(document.getElementById("img").value);
-      } else if (inputs[1].checked == true) {
-        console.log(inputs[1].value);
-      } else if (inputs[2].checked == true) {
-        console.log(inputs[2].value);
-      } else {
-        alert("Please Select the Banner");
-      }
+      console.log(event.target.file);
     } else if (homeBannerPC) {
-      var inputs = document
-        .getElementById("homeBannerPCSpan")
-        .getElementsByTagName("input");
-      if (inputs[0].checked == true) {
-        console.log(inputs[0].value);
-        console.log(document.getElementById("img").value);
-      } else if (inputs[1].checked == true) {
-        console.log(inputs[1].value);
-        var imageName = document.getElementById("img").value;
-        console.log(imageName);
-        if (imageName == "") alert("select image");
-        else {
-          console.log("ready to upload");
-        }
-      } else if (inputs[2].checked == true) {
-        console.log(inputs[2].value);
-      } else {
-        alert("Please Select the Banner");
-      }
+      
     }
   }
+   function upload(e) {
+     console.log(e.target.files);
+     const files=e.target.files[0];
+     const formData = new FormData();
+     formData.append('img',files);
+     fetch('http://3.137.209.222:8000/ImageUpload/',{
+       method : "POST",
+       body:formData
+     }).then((res)=>{
+       res.json().then((result)=>{
+         console.log(result);
+       })
+     })
+   }
+
+  
   return (
     <>
       {/* <Navbar/> */}
@@ -157,7 +144,7 @@ export default function Admin_banner_panel() {
                 name="img"
                 accept="image/*"
                 style={{ marginTop: "10px", lineHeight: "15px" }}
-              ></input>
+              onChange={(e)=>upload(e) }  ></input>
               {/* UI for dpoing items , not yet functioning only the UI */}
               {/* <div className="dropit" 
         style={{
@@ -181,26 +168,7 @@ export default function Admin_banner_panel() {
                   lineHeight: "20px",
                 }}
               >
-                <input
-                  type="url"
-                  placeholder="enter the url of the image"
-                  style={{
-                    width: "100%",
-                    height: "15px",
-                    fontFamily: "Roboto",
-                    color: "#333",
-                    fontSize: "1.2rem",
-                    margin: "0 auto",
-                    padding: " 1.5rem 2rem",
-                    borderRadius: " 0.2rem",
-                    backgroundColor: " rgb(255, 255, 255)",
-                    border: "none",
-                    width: "90%",
-                    display: " block",
-                    borderBottom: "0.1rem solid ",
-                  }}
-                ></input>
-              </div>
+               </div>
 
               <button
                 className={admin.banner_submission_button}

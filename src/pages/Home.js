@@ -588,11 +588,9 @@ const [isuser,setisuser]=useState(true);
             arrows={false}
             swipe={false}
           >
-            <div className={home.carousel_image1}>
-            </div>
+            <div className={home.carousel_image1}></div>
             <div className={home.carousel_image2}>
-              <span className={home.carousel_image2_txt}>
-              </span>
+              {/* <span className={home.carousel_image2_txt}> </span> */}
             </div>
             <div className={home.carousel_image3}>
             </div>
