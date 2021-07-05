@@ -154,16 +154,28 @@ const togglePop2 = () => {
   return (
     <>
      <Navbar />
-    <Container>
+    <Container style={{
+      // backgroundColor: 'black'
+    }}>
      
-      <p className="decor_txt">
+      <p className="decor_txt"
+      style={{
+        // marginTop: '10px'
+      }}
+      >
         Let's Begin Your
         <div style={{ display: "flex" }}>
           <p style={{ textShadow: "4px 4px 4px #0000004A" }}>FITBUDDY&nbsp;</p>
           Journey1
         </div>
       </p>
-      <img className="img_dec" src="/assets/login_img.png" alt="" />
+      <img className="img_dec" src="/assets/login_img.png" alt="" style={{
+        marginBottom: '-5px',
+        height: '400px',
+        width: '500px',
+        marginLeft:'200px',
+        backgroundColor:'black'
+      }} />
       <div className="form_sec">
         <form className="form_ctr" onSubmit={(event) => nextStep(event)}>
           <img className="logo" src="/assets/logo.png" />

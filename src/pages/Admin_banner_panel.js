@@ -1,9 +1,41 @@
 import React from "react";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import admin from "./styles/admin.module.css";
 export default function Admin_banner_panel() {
-    const [submitdone,setsubmitdone]=useState(false)
+    const [submitdone,setsubmitdone]=useState(0)
   
+     useEffect(() => {
+    
+      const droparea = document.querySelector(".droparea");
+
+      droparea.addEventListener("dragover", (e) => {
+        console.log('inside drop area');
+        e.preventDefault();
+        droparea.classList.add(admin.hover);
+      });
+      droparea.addEventListener("dragleave", () => {
+        droparea.classList.remove(admin.hover);
+      });
+      droparea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        const image = e.dataTransfer.files[0];
+          return upload(image);
+      });
+      const upload = (image) => {
+        droparea.innerText = "Added " + image.name;
+      };
+  },[]);
+
+
+
+
+
+
+
+
+
+
+
   function handlesubmit(e){
     e.preventDefault();
     const myimg=document.getElementById('img');
@@ -19,13 +51,13 @@ export default function Admin_banner_panel() {
     }).then((res)=>{
       console.log(res);
       if(res.status==200){
-        setsubmitdone(true);
+        setsubmitdone(1);
         myform.reset();
       }
     }).catch((error)=>{console.log('error->' ,error);})
   }
 
-
+ 
 
 
 
@@ -40,7 +72,6 @@ export default function Admin_banner_panel() {
           alignItems: "center",
           justifyContent: "center",
           border: "none",
-          // backgroundColor:'black'
         }}
       >
         <form id="myform"
@@ -54,9 +85,28 @@ export default function Admin_banner_panel() {
                 style={{ marginTop: "10px", lineHeight: "15px" }}
                ></input>
               {
-                submitdone ==true? <h3>image uploaded</h3>:null
+               submitdone===1?<h3>iamge uploaded</h3>:null
               }
-              <button
+              <hr />
+              <div className="orstatement" 
+              style={{
+                display: 'flex',
+                justifyContent:'center',
+                alignItems:'center'
+              }}
+              >OR</div><hr />
+              <br /><br />
+             <div class="droparea" id="dnd" style={{
+                height: '250px',
+                width:' 300px',
+                border: '1px dashed gray',
+                color: 'gray',
+                display:' flex',
+                justifyContent: 'center',
+                alignItems:' center',
+             }}>Drop the Image Here</div>
+               <br />
+               <button
                 className={admin.banner_submission_button}
                 type="submit"
                 style={{
@@ -74,10 +124,11 @@ export default function Admin_banner_panel() {
               >
                 Upload
               </button>
-           
-         
+              
         </form>
       </div>
     </>
   );
+ 
+  
 }

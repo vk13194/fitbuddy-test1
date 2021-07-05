@@ -100,7 +100,7 @@ td button:hover {
 }
 .admin_outer_form{
   font-family: Font_medium;
-  height: 300px;
+  height: 500px;
   border: 1px solid gray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 50px;
@@ -121,4 +121,9 @@ td button:hover {
   color: gray;
   font-family: Font_medium;
     cursor: pointer;
+}
+.hover {
+  color: #fff;
+  border: 1px dashed #fff;
+  background-color: antiquewhite;
 }
