@@ -3,6 +3,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import { useHistory, Link } from "react-router-dom";
 import Navbar from "./Navbar.js";
+import axios from 'axios'
 import {
   TextInputs,
   User,
@@ -45,31 +46,6 @@ const PrettoSlider = withStyles({
     boxShadow: "2px 2px 4px grey",
   },
 })(Slider);
-/*function checkStatus(data){
-  console.log("check status");
-  if(data.token) localStorage.setItem("token",JSON.stringify(data.token));
-  else if(data.success == false) 
-  {
-    var errorLabel=document.getElementById("loginErrorLabel");
-    errorLabel.innerHTML=(data.error);
-    errorLabel.hidden=false;
-  }
-  if(data.success==null)
-  {
-  var payload=localStorage.getItem("token").split(".")[1];
-  var decoded=atob(payload);
-  var result=JSON.parse(decoded);
-  console.log(result+".."+result.role);
-  if(result.role == "customer")
-  {
-    document.getElementById("redirectToUserProfileButton").click();
-  }
-  else if(result.role == "trainer")
-  {
-    document.getElementById("redirectToTrainerProfileButton").click();
-  }
-}
-}*/
 
 export default function User_details() {
   let gender="";
@@ -151,24 +127,22 @@ function cleanupData()
       age=document.getElementById("age").getElementsByTagName("input")[0].value;
       weight=document.getElementById("weight").getElementsByTagName("input")[0].value;
       height=document.getElementById("height").getElementsByTagName("input")[0].value;
-      fetch("http://3.137.209.222:8000/userdetail/",{
-            method: "POST",
-            headers: {
-             "Content-type": "application/json" 
-              },
-              body : JSON.stringify({
-             "userid": sessionStorage.getItem("email"),
-             "password": sessionStorage.getItem("password"),
-             "name": name,
-                "age": age,
-                 "mobileno": mobileNumber,
-             "gender": gender,
-              "weight": weight,
-             "height": height,
-              "country": country,
-              "photo": photo
-              })}).then((res)=>res.json()).then((data)=>{evaluateResult(data)}).catch((error)=>{console.error(error);});
-              }
+      fetch("http://api.fitbuddy.co.in:8000/UserRegister/",{
+        method: "POST",
+        headers: {
+         "Content-type": "application/json" 
+          },
+          body : JSON.stringify({
+         "userid": sessionStorage.getItem("email"),
+         "password": sessionStorage.getItem("password"),
+         "name": name,
+           
+          })}).then((res)=>console.log(res))
+          }
+    
+     
+
+
   return (
     <>
     <Navbar/>

@@ -33,19 +33,23 @@ export default function Signup() {
     }
     }
     else if(type=="user"){
-
+      if(data.status=="404"){
+        history.push("/signup/user_details");
+      }
+      else if(data.status="200"){
+        console.log(data.data);
+        alert("user Already Exists !!")
+      }
     }
   }
   const nextStep = (event) => {
     event.preventDefault();
-    //sessionStorage.setItem("email",email);
-    //sessionStorage.setItem("password",password);
     console.log(sessionStorage.getItem("email"));
     if(document.getElementsByName("type")[0].checked==true){
-
+      
     }
     else if(document.getElementsByName("type")[1].checked==true){
-      fetch("http://3.137.209.222:7000/Particulartrainer/",{
+      fetch("http://3.137.209.222:8000/TrainerLogin/",{
         method: "POST",
         headers: {
           "Content-type": "application/json" 
@@ -61,10 +65,6 @@ export default function Signup() {
     console.log(sessionStorage.getItem("email"));
     //Call to login for checking if trainer exist
   };
-  const onMenuClick = (event) => {
-    setdrpdown(event.target.innerText);
-    setrendermenu(!rendermenu);
-  };
   const typeChangeHandler = (event) => {
     console.log(event.target.value);
     event.target.value == "trainer" ? settrainer(true) : settrainer(false);
@@ -73,7 +73,7 @@ export default function Signup() {
   
 const CheckLogin = () => {
   if(document.getElementsByName("type")[0].checked==true){
-    fetch('http://3.137.209.222:7000/login/', {
+    fetch('http://3.137.209.222:8000/login/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -94,7 +94,7 @@ const CheckLogin = () => {
           history.push("/user/profile");
           }
           else if(responseJson.status="404"){
-            history.push("/signup/user");
+            history.push("/signup/user_details");
           }
       }).catch((error) => {
         console.error(error);
@@ -103,7 +103,7 @@ const CheckLogin = () => {
   }
   else if(document.getElementsByName("type")[1].checked==true){
 
-    fetch('http://3.137.209.222:7000/TrainerLogin/', {
+    fetch('http://3.137.209.222:8000/TrainerLogin/', {
   method: 'POST',
   // credentials: 'omit', 
   headers: {
@@ -118,8 +118,6 @@ const CheckLogin = () => {
   })
   }).then((response) => response.json())
       .then((responseJson) => {
-          // If server response message same as Data Matched
-        //setTobecollected(responseJson.Message);
         sessionStorage.setItem("email",document.getElementById("email").value);
         sessionStorage.setItem("password",document.getElementById("password").value);
         console.log(responseJson);
@@ -656,3 +654,4 @@ Last updated June 2021.</p>
     </>
   );
 }
+//  

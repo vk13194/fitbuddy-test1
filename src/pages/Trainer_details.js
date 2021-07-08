@@ -26,29 +26,6 @@ export default function Trainer_details() {
   let bio="";
   let experience='{';
   let history=useHistory();
-/*              <label>
-              <p>
-                  PSC<p>(per Session Charge)</p>
-                </p>
-                <input placeholder="₹ 1500" type="number" onChange={(event)=>{perSessionCharge=event.target.value}}/>
-              </label>
-*/
-/*{
-  "userid": localStorage.getItem("email");
-  "password": localStorage.getItem("password");
-  "name": name,
-  "gender": gender,
-  "Country":country,
-  "city":city,
-  "MobNum":phoneNumber,
-  "age":age,
-  "height":height,
-  "weight":weight,
-  "experience": experience,
-  "persession":perSessionCharge,
-  "profilePhoto":link,
-  "bio":bio
-}*/
 
 function addExperienceRow(event){
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
@@ -92,11 +69,6 @@ function encodeImageFileAsURL(element) {
   reader.onloadend = function(e) {
     var arrayBuffer=e.target.result;
     console.log(arrayBuffer);
-    /*var blob=blobUtil.arrayBufferToBlob(arrayBuffer,type);
-    console.log(blob);
-    setPhoto(blob);
-    console.log(blobUtil.createObjectURL(blob));
-    console.log(blob.text());*/
     setPhoto(arrayBuffer.toString());
     console.log(arrayBuffer.toString());
   }
@@ -106,84 +78,6 @@ else{
   document.getElementById("profile_label").style.backgroundImage="url('')";
 }
 }
-/*function proceedToNext()
-{
-  if(gender=="") {
-    console.log("Select Gender");
-    document.getElementById("select_gender_error_label").style.display="block";
-}
-  else if(name=="") {
-    console.log("Name Required");
-    document.getElementById("name_input").focus();
-  }
-  else if(country=="" || city=="") {
-    if(country=="" && city=="") {
-      console.log("City and Country Required");
-      document.getElementById("city_country_input").focus();
-    }
-    else if(city=="") {
-      console.log("City Required");
-      document.getElementById("city_country_input").focus();
-    }
-    else {
-      console.log("Country Required");
-      document.getElementById("city_country_input").focus();
-    }
-  }
-  else if(phoneNumber==""){
-    
-  }
-  var filename=document.getElementById("file-upload").value.slice(12);
-  var file=document.getElementById("file-upload");
-  var extension=filename.substring(filename.lastIndexOf('.')+1, filename.length);
-  var newFile=new File([file],"something1"+"."+extension.toLowerCase(),{type: "image/"+extension.toLowerCase()});
- //document.getElementById("file-upload").value=document.getElementById("file-upload").value.replace(filename,"something1"+extension);
-var newFileName = file.filename + "new";
-  var formData = new FormData();
-//  formData.append('file',file.files[0], newFileName);
-  //document.getElementById("display_img").src=URL.createObjectURL(formData.files[0]);
-  newFileName="something1."+extension;
-
-  console.log(newFile);
-  console.log(file);
-  // alert(["name : "+name,
-  // "email :"+sessionStorage.getItem("email"),
-  // "password :"+sessionStorage.getItem("password"),
-  // "gender : "+gender,
-  // "Country : "+country,
-  // "city : "+city,
-  // "MobNum : "+phoneNumber,
-  // "age : "+age,
-  // "height : "+height,
-  // "weight : "+weight,
-  // "experience : "+experience.replace(/,\s*$/, "")+"]}",
-  // "persession : "+perSessionCharge,
-  // //"profilePhoto : "+link,
-  // "bio : "+bio]);
-console.log(sessionStorage.getItem("email").toString());
-
-  fetch("http://3.137.209.222:8000/TrainerReg/",{
-    method: "POST",
-    headers: {
-      "Content-type": "application/json" 
-    },
-    body : {
-      "userid": sessionStorage.getItem("email").toString(),
-  "password": sessionStorage.getItem("password"),
-  "name": name,
-  "gender": gender,
-  "country":country,
-  "city":city,
-  "mobileno":phoneNumber,
-  "age":age,
-  "height":height,
-  "weight":weight,
-  "experience": experience,
-  "description":bio,
-  "photo":file
-    }
-  }).then((res)=>res.json()).then((data)=>{console.log("hell");console.log(data);});   
-}*/
 const TrainerReg = () => {
 
   alert("test");
@@ -248,7 +142,6 @@ alert(JSON.stringify({
 'age':age.toString(),
 'height':height.toString(),
 'weight':weight.toString(),
-'experience': experience.replace(/,\s*$/, "")+"}",
 'description':bio,
 
 }));
@@ -268,7 +161,7 @@ height=document.getElementById("height").value;
 experience=sessionStorage.getItem("experience");
 bio=document.getElementById("bio").value;
 
-fetch('http://3.137.209.222:8000/TrainerReg/', {
+fetch('https://api.fitbuddy.co.in/userdetail/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -287,7 +180,6 @@ fetch('http://3.137.209.222:8000/TrainerReg/', {
   'age':age,
   'height':height,
   'weight':weight,
-  'experience': experience.replace(/,\s*$/, "")+"}",
   'description': bio,
   'photo':photo
   })
@@ -414,7 +306,7 @@ console.log("out");
             <input id="file-upload" type="file" accept="image/*" onChange={()=>{encodeImageFileAsURL(document.getElementById("file-upload"));}}/>
           </ProfileImage>
           <label id="loading_label" style={{"display":"none"}}>Please wait Uploading....</label>
-          <TickCtr onClick={()=>{TrainerReg()}}>
+          <TickCtr onClick={TrainerReg}>
             <TiTick />
           </TickCtr>
         </div>

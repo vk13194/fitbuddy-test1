@@ -580,6 +580,8 @@ const [isuser,setisuser]=useState(true);
             </div>
           </div>
 
+
+
           <Slider
             className={home.carousal}
             dotsClass="carousel-dots"
@@ -589,12 +591,19 @@ const [isuser,setisuser]=useState(true);
             swipe={false}
           >
             <div className={home.carousel_image1}></div>
-            <div className={home.carousel_image2}>
-              {/* <span className={home.carousel_image2_txt}> </span> */}
-            </div>
-            <div className={home.carousel_image3}>
-            </div>
+            <div className={home.carousel_image2}></div>
+            <div className={home.carousel_image3}></div>
           </Slider>
+
+
+
+
+
+
+
+
+
+
           <div className={home.ctr1_line}>
             <Link to="/signup" style={{ textDecoration: "none" }}>
               <button className={home.join_btn_ctr1}>
