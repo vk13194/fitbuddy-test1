@@ -127,7 +127,7 @@ function cleanupData()
       age=document.getElementById("age").getElementsByTagName("input")[0].value;
       weight=document.getElementById("weight").getElementsByTagName("input")[0].value;
       height=document.getElementById("height").getElementsByTagName("input")[0].value;
-      fetch("http://api.fitbuddy.co.in:8000/UserRegister/",{
+      fetch("https://api.fitbuddy.co.in:8000/UserRegister/",{
         method: "POST",
         headers: {
          "Content-type": "application/json" 
