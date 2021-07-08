@@ -135,7 +135,7 @@ function cleanupData()
           body : JSON.stringify({
          "userid": sessionStorage.getItem("email"),
          "password": sessionStorage.getItem("password"),
-         "name": name,
+         "name": name
            
           })}).then((res)=>console.log(res))
           }

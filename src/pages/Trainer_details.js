@@ -161,7 +161,7 @@ height=document.getElementById("height").value;
 experience=sessionStorage.getItem("experience");
 bio=document.getElementById("bio").value;
 
-fetch('https://api.fitbuddy.co.in/userdetail/', {
+fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -189,6 +189,7 @@ fetch('https://api.fitbuddy.co.in/userdetail/', {
   //setTobecollected(responseJson.Message);
   if(responseJson.status=="200")
     {
+      console.log('trainerloginstatus',responseJson.status);
       console.log(responseJson.data);
       history.push("/trainer/profile");
     }
