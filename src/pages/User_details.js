@@ -135,8 +135,13 @@ function cleanupData()
           body : JSON.stringify({
          "userid": sessionStorage.getItem("email"),
          "password": sessionStorage.getItem("password"),
-         "name": name
-           
+         "name": name,
+          "age" : age,
+          "gender": gender,
+          "mobileno" : mobileNumber,
+          "height":height,
+          "weight":weight,
+          "photo" : photo
           })}) .then(response => response.json())
           .then(responseJson => {
             if(responseJson.status==200){
