@@ -48,7 +48,7 @@ function App() {
           <Route exact path="/admin_panel/view_users" component={View_users} />
           <Route exact path="/trainer" component={Trainer_Landing} />
           <Route exact path="/trainer/profile" component={Trainer_profile} />
-          <Route exact path="/user/profile" component={User_profile} />
+          <Route exact path="/user_profile" component={User_profile} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signup/trainer" component={Trainer_details} />
           <Route exact path="/signup/user_details" component={User_details} />

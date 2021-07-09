@@ -137,8 +137,19 @@ function cleanupData()
          "password": sessionStorage.getItem("password"),
          "name": name
            
-          })}).then((res)=>console.log(res))
-          }
+          })}) .then(response => response.json())
+          .then(responseJson => {
+            if(responseJson.status==200){
+      console.log('trainerloginstatus',responseJson.status);
+      console.log(responseJson.data);
+      history.push("/user_profile");
+    }
+    else
+    {
+      alert(responseJson.Message);  
+    }
+          }).catch(error => console.log(error))
+        }
     
      
 
