@@ -14,7 +14,7 @@ import Navbar from "./Navbar";
 export default function Trainer_profile() {
   const history=useHistory();
   console.log(sessionStorage.getItem('email'));
-  fetch('http://3.137.209.222:8000/TrainerLogin/', {
+  fetch('https://api.fitbuddy.co.in/TrainerLogin/', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
