@@ -212,7 +212,7 @@ const [isuser,setisuser]=useState(true);
     var role=JSON.parse(atob(token.split(".")[1])).role;
     if(role == "customer")
     {
-      history.replace("/user/profile");
+      history.replace("/user_profile");
     }
     else if(role == "trainer")
     {
@@ -542,7 +542,7 @@ const [isuser,setisuser]=useState(true);
               </p>
               <p>
                 <img className={home.icon} src="/assets/trainer.png" alt="" />
-                TRAINER REGISTRATION
+                TRAINER LOGIN/SIGNUP
               </p>
               <p>
                 <img className={home.icon} src="/assets/contact.png" alt="" />
@@ -569,10 +569,12 @@ const [isuser,setisuser]=useState(true);
                 <img className={home.icon} src="/assets/session.png" alt="" />
                 PACKAGES
               </p>
+              <Link to="/trainer_register"  style={{textDecoration:'none'}}>
               <p>
                 <img className={home.icon} src="/assets/trainer.png" alt="" />
-                TRAINERS REGISTRATIONS
+                TRAINERS LOGIN/SIGNUP
               </p>
+              </Link>
               <p>
                 <img className={home.icon} src="/assets/contact.png" alt="" />
                 CONTACT US

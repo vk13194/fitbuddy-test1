@@ -15,28 +15,48 @@ import {
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 
-export default function Signup() {
+export default function Trainer_register() {
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
   const [drpdown, setdrpdown] = useState("indivisual or company");
   const [rendermenu, setrendermenu] = useState(false);
   const [seen, setSeen]= useState(false);
   const [seen2, setSeen2] =useState(false);
+  const getStatus=(data)=>{
+    if(data.status=="404"){
+      history.push("/signup/trainer");
+    }
+    else if(data.status="200"){
+      console.log(data.data);
+      history.push("trainer/profile");
+    }
+  }
   const nextStep = (event) => {
     event.preventDefault();
     console.log(sessionStorage.getItem("email"));
+      fetch("https://api.fitbuddy.co.in/TrainerLogin/",{
+        method: "POST",
+        headers: {
+          "Content-type": "application/json" 
+        },
+        body : JSON.stringify({
+          "userid" : sessionStorage.getItem("email"),
+        })
+      }).then((res)=>res.json()).then((data)=>getStatus(data,"trainer"));    
     console.log(sessionStorage.getItem("email"));
-    //Call to login for checking if trainer exist
   };
-
+ 
   
 const CheckLogin = () => {
-    fetch('https://api.fitbuddy.co.in/login/', {
+  
+    fetch('https://api.fitbuddy.co.in/TrainerLogin/', {
   method: 'POST',
+  // credentials: 'omit', 
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'  
   },
+  // referrerPolicy: 'no-referrer',
   body: JSON.stringify({  
     "action":"dashboard_data",
     "userid":document.getElementById("email").value,
@@ -49,15 +69,17 @@ const CheckLogin = () => {
         console.log(responseJson);
           if(responseJson.Message=="Login Successfully")
           {
-          history.push("/user_profile");
+          history.push("/trainer/profile");
           }
           else if(responseJson.status="404"){
-            history.push("/signup/user_details");
+            history.push("/signup/trainer");
           }
       }).catch((error) => {
+        // alert(error);
         console.error(error);
       });
 }
+
 const togglePop = () => {
 setSeen(!seen);
 }
@@ -112,7 +134,6 @@ const togglePop2 = () => {
             <RiLockPasswordLine color="#4a4a4a" />
             <input id="password" onChange={(event)=> {sessionStorage.setItem("password",event.target.value);}} type="password" placeholder="password" required></input>
           </div>
-        
           <button className="continue" onClick={CheckLogin} type="button">
             CONTINUE
           </button>

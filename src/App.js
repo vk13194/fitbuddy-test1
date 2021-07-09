@@ -21,6 +21,8 @@ import Admin_banner_panel from "./pages/Admin_banner_panel";
 import Privacy_policy from "./pages/Privacy_policy";
 import Terms_and_conditions from "./pages/Terms_and_conditions";
 import Policiesfooter from "./pages/Policiesfooter";
+import Trainer_register from "./pages/Trainer_register"
+
 function App() {
  
  return (
@@ -59,6 +61,7 @@ function App() {
           <Route exact path="/admin_banner_panel" component={Admin_banner_panel}/>
           <Route exact path="/privacy_policy" component={Privacy_policy}/>
           <Route exact path="/terms_and_conditions" component={Terms_and_conditions}/>
+          <Route exact path="/trainer_register" component={Trainer_register} />
         </Switch>
       </Router>
     </>

@@ -41,8 +41,8 @@ const Navbar = () => {
             <Link style={{textDecoration:'none'}}>
             <li style={{ cursor: "pointer",textDecoration:'none',color:'white'}}><img className={home.icon} src="/assets/session.png" alt="p" />PACKAGES</li>
             </Link>
-            <Link style={{textDecoration:'none'}}>
-            <li style={{ cursor: "pointer",textDecoration:'none',color:'white'}}><img className={home.icon} src="/assets/trainer.png" alt="tr" />TRAINERS REGISTRATIONS</li>
+            <Link to="/trainer_register" style={{textDecoration:'none'}}>
+            <li style={{ cursor: "pointer",textDecoration:'none',color:'white'}}><img className={home.icon} src="/assets/trainer.png" alt="tr" />TRAINERS LOGIN/SIGNUP</li>
             </Link>
             <Link style={{textDecoration:'none'}}>
             <li style={{ cursor: "pointer",textDecoration:'none',color:'white'}}><img className={home.icon} src="/assets/contact.png" alt="cs" />CONTACT US</li>
