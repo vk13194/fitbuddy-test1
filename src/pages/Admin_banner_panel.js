@@ -32,15 +32,14 @@ export default function Admin_banner_panel() {
    function handleimage(e){
      console.log(e.target.files);
      setimage(e.target.files);
-     encodeImageFileAsURL(e);
    }
    function handlesubmit(event){
      event.preventDefault();
-     const urlpath="http://3.137.209.222:8000/ImageUpload/";
+     const urlpath="https://api.fitbuddy.co.in/ImageUpload/";
 
 
 
-     const url="http://3.137.209.222:8000/slider/";
+     const url="https://api.fitbuddy.co.in/slider/";
 
      const formData = new FormData();
      formData.append('file',image[0])

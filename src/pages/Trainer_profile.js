@@ -10,7 +10,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Navbar from "./Navbar";
-
+import {Link} from 'react-router-dom';
 export default function Trainer_profile() {
   const history=useHistory();
   console.log(sessionStorage.getItem('email'));
@@ -44,7 +44,7 @@ export default function Trainer_profile() {
           console.error(error);
         });
   function displaySessionTimeScreen(){
-    
+    history.push("/session_timing");
   }
   function logout(){
     sessionStorage.removeItem("email");
@@ -68,17 +68,17 @@ export default function Trainer_profile() {
             <p className="designation"></p>
           </div>
           <div className="options">
-            <p>
-              <FiUser className="icon" /> Trainer Info
-            </p>
-            <p>
-              <IoIosNotificationsOutline className="icon" /> Notification
+          <p>
+              <BsPlay className="icon" /> Participants profile
             </p>
             <p onClick={()=>{displaySessionTimeScreen()}}>
               <AiOutlineSetting className="icon" /> Session Time
             </p>
             <p>
-              <BsPlay className="icon" /> Participants profile
+              <IoIosNotificationsOutline className="icon" /> Notification
+            </p>
+            <p>
+              <FiUser className="icon" /> Trainer Info
             </p>
             <p>
               <BsGraphUp className="icon" /> Share

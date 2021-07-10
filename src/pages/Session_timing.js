@@ -389,9 +389,10 @@ function addNewRow()
                 */
             
    return (
-       <>
+       < > 
        <Navbar/>
-        <div className={st.main_frame}>
+       <div style={{display:"flex", justifyContent:"center" ,alignItems:"center" ,height:'80vh'}}>
+        <div className={st.main_frame} style={{width:"1200px"}}>
             <table id="mainTable" className={st.session_timing_table}>
                 <tr>
                     <th colSpan="2">Session</th>
@@ -402,13 +403,13 @@ function addNewRow()
                     {sessionDropDownList}
                  {  
                  timeStatus && (<td colSpan="2" id="firstRowColumn2">
-                 <span className={st.exercise_button_time} onChange={(event)=>TimeChangeHandler(event)}>
+                 <span className={st.exercise_button_time} onChange={(event)=>TimeChangeHandler(event)} style={{width:'300px',height:'40px',display:'flex',justifyContent:"center", alignItems:'center'}}>
                  From <input style={{"border-radius":"5px"}} type="time"></input> To <input style={{"border-radius":"5px"}} type="time"></input>
                  </span>
                  </td>) 
                  }
                  {
-                dayStatus &&(<td colSpan="2" id="firstRowColumn3" onChange={(event)=>DayChangeHandler(event)}>
+                dayStatus &&(<td colSpan="2" id="firstRowColumn3" onChange={(event)=>DayChangeHandler(event)} >
                     <span className={st.exercise_button_span} onClick={()=>dayListHandler()}> Select Day &#x25BC;
                     </span><ul className={st.exercise_button_ul_list} style={{"display": dayUlList}}>
                         <li><input type="checkbox"></input>Monday</li>
@@ -429,6 +430,7 @@ function addNewRow()
                 <td colSpan="3"><button className={st.save_button}>Save</button></td>
                 </tr>
             </table>
+        </div>
         </div>
         </>
     );

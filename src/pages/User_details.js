@@ -4,6 +4,11 @@ import Slider from "@material-ui/core/Slider";
 import { useHistory, Link } from "react-router-dom";
 import Navbar from "./Navbar.js";
 import axios from 'axios'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import {
   TextInputs,
   User,
@@ -46,11 +51,25 @@ const PrettoSlider = withStyles({
     boxShadow: "2px 2px 4px grey",
   },
 })(Slider);
-
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 export default function User_details() {
   let gender="";
   let country="";
-  let city="";
+  const classes = useStyles();
+  const [city,setcity]=useState("Mumbai")
+  const handleChange = (event) => {
+    setcity(event.target.value);
+    console.log(city);
+  };
   let age="";
   let mobileNumber="";
   let weight="";
@@ -120,9 +139,9 @@ function cleanupData()
       else if(document.getElementById("female_gender_button").className=="gender_selected"){
         gender="Female";
       } 
-      name=document.getElementById("name").value;
+      name=document.getElementById("name1").value;
       country=document.getElementById("city_country_input").value.split(",")[0];
-      city=document.getElementById("city_country_input").value.split(",")[1];
+      // city=document.getElementById("city_country_input").value.split(",")[1];
       mobileNumber=document.getElementById("mobileno").value;
       age=document.getElementById("age").getElementsByTagName("input")[0].value;
       weight=document.getElementById("weight").getElementsByTagName("input")[0].value;
@@ -141,7 +160,9 @@ function cleanupData()
           "mobileno" : mobileNumber,
           "height":height,
           "weight":weight,
-          "photo" : photo
+          "photo" : photo,
+          "country":country,
+          "city": city
           })}) .then(response => response.json())
           .then(responseJson => {
             if(responseJson.status==200){
@@ -155,8 +176,14 @@ function cleanupData()
     }
           }).catch(error => console.log(error))
         }
-    
-     
+        const [open, setOpen] = useState(false);
+        const handleClose = () => {
+          setOpen(false);
+        };
+      
+        const handleOpen = () => {
+          setOpen(true);
+        };
 
 
   return (
@@ -164,7 +191,7 @@ function cleanupData()
     <Navbar/>
     <User>
       <TextInputs>
-        <div className="head">
+        <div className="head" style={{border:'5px solid #8cc63e',width:'500px',borderRadius:'20px'}}>
           <HiOutlineArrowNarrowLeft />
           <p>Fitness Goals</p>
           <HiOutlineArrowNarrowRight />
@@ -183,21 +210,38 @@ function cleanupData()
               else if(gender=="Male") {gender="Female";document.getElementById("male_gender_button").className="gender_unselected";event.target.className="gender_selected";}
             }} className="gender_unselected" value="Female">Female</button>
             <p>Name</p>
-            <input id="name" onChange={(event)=>{name=event.target.value}} type="text" placeholder="Fit XXXXXX" required/>
+            <input id="name1" onChange={(event)=>{name=event.target.value}} type="text" placeholder="Fit XXXXXX" required/>
           </div>
           <div className="ctr_2">
-            <p>Country, City</p>
+            <p>Country</p>
             <input id="city_country_input" onChange={(event)=>{
-              country=event.target.value.split(",")[0];
-              city=event.target.value.split(",")[1];
-            }}type="text" placeholder="India, New Delhi" required/>
+              country=event.target.value
+            }}type="text" placeholder="India" required/>
+            <p>CITY</p>
+            <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">{city}</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={age}
+          onChange={handleChange}
+        >
+
+          <MenuItem value={'Mumbai'}>Mumbai</MenuItem>
+          <MenuItem value={'Delhi'}>delhi</MenuItem>
+          <MenuItem value={'Kolkata'}>Kolkata</MenuItem>
+        </Select>
+      </FormControl>
 
             <p>Mobile Number</p>
             <input id="mobileno" onChange={(event)=>{mobileNumber=event.target.value}} type="text" placeholder="+91 7800000000" required/>
           </div>
         </div>
       </TextInputs>
-      <div className="lower_ctr">
+      <div className="lower_ctr" >
         <div className="slider_ctr">
           <p>Age(years)</p>
           <PrettoSlider
@@ -230,7 +274,7 @@ function cleanupData()
             defaultValue={70}
           />
         </div>
-        <div className="bottom_left_ctr">
+        <div className="bottom_left_ctr" style={{marginTop:'200px'}}>
           <ProfileImage>
             <label
               for="file-upload"
@@ -247,7 +291,7 @@ function cleanupData()
           <label id="loading_label" style={{"display":"none"}}>Please wait Uploading....</label>
           <TickCtr onClick={()=>{registerUser()}
 
-              }>
+              }  style={{boxShadow:" 12px 12px 24px 0 rgba(0, 0, 0, 0.2) , -12px -12px 24px 0 rgba(255, 255, 255, 0.5)"}}>
               <Link to="/user/profile"><button id="redirectToUserProfileButton" style={{"display":"none"}}></button></Link>
             <Link to="/"><button id="redirectToHomePage" hidden="true"></button></Link>
 

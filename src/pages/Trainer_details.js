@@ -13,11 +13,26 @@ import {
 import { TiTick } from "react-icons/ti";
 import {useHistory} from "react-router-dom";
 import Navbar from "./Navbar.js";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 export default function Trainer_details() {
   const [photo,setPhoto]= useState("");
   let gender="";
   let country="";
-  let city="";
   let name="";
   let phoneNumber="";
   let age="";
@@ -26,7 +41,12 @@ export default function Trainer_details() {
   let bio="";
   let experience='{';
   let history=useHistory();
-
+  const classes = useStyles();
+  const [city,setcity]=useState("Mumbai")
+  const handleChange = (event) => {
+    setcity(event.target.value);
+    console.log(city);
+  };
 function addExperienceRow(event){
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
   var exp=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
@@ -88,8 +108,7 @@ else if(document.getElementById("female_gender_button").className=="gender_selec
   gender="Female";
 }
 name=document.getElementById("name").value;
-country=document.getElementById("city_country_input").value.split(",")[0];
-city=document.getElementById("city_country_input").value.split(",")[1];
+country=document.getElementById("city_country_input").value;
 phoneNumber=document.getElementById("mobileno").value;
 age=document.getElementById("age").value;
 weight=document.getElementById("weight").value;
@@ -152,8 +171,7 @@ else if(document.getElementById("female_gender_button").className=="gender_selec
   gender="Female";
 }
 name=document.getElementById("name").value;
-country=document.getElementById("city_country_input").value.split(",")[0];
-city=document.getElementById("city_country_input").value.split(",")[1];
+country=document.getElementById("city_country_input").value;
 phoneNumber=document.getElementById("mobileno").value;
 age=document.getElementById("age").value;
 weight=document.getElementById("weight").value;
@@ -181,7 +199,8 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   'height':height,
   'weight':weight,
   'description': bio,
-  'photo':photo
+  'photo':photo,
+   "city": city
   })
 }).then((response) => response.json())
 .then((responseJson) => {
@@ -205,13 +224,20 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
 document.getElementById("loading_label").style.display="block";
 console.log("out");
 }
+const [open, setOpen] = useState(false);
+const handleClose = () => {
+  setOpen(false);
+};
 
+const handleOpen = () => {
+  setOpen(true);
+};
   return (
     <>
     <Navbar/>
     <Trainer>
       <TextInputs>
-        <div className="head">
+        <div className="head" style={{border:'5px solid #8cc63e',width:'500px',borderRadius:'20px'}}>
           <HiOutlineArrowNarrowLeft />
           <p>Trainer Details</p>
           <HiOutlineArrowNarrowRight />
@@ -237,10 +263,26 @@ console.log("out");
           <div className="ctr_2">
             <p>Country, City</p>
             <input id="city_country_input" onChange={(event)=>{
-              country=event.target.value.split(",")[0];
-              city=event.target.value.split(",")[1];
-              if(city==undefined) city="";
-            }}type="text" placeholder="India, New Delhi" />
+              country=event.target.value
+            }}type="text" placeholder="India" />
+             <p>CITY</p>
+            <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">{city}</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={age}
+          onChange={handleChange}
+        >
+
+          <MenuItem value={'Mumbai'}>Mumbai</MenuItem>
+          <MenuItem value={'Delhi'}>delhi</MenuItem>
+          <MenuItem value={'Kolkata'}>Kolkata</MenuItem>
+        </Select>
+      </FormControl>
 
             <p>Mobile Number</p>
             <input id="mobileno" onChange={(event)=>{phoneNumber=event.target.value}} type="text" placeholder="+91 7800000000" />

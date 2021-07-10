@@ -592,7 +592,7 @@ const [isuser,setisuser]=useState(true);
             arrows={false}
             swipe={false}
           >
-            <div className={home.carousel_image1}></div>
+            <div className={home.carousel_image1} ></div>
             <div className={home.carousel_image2}></div>
             <div className={home.carousel_image3}></div>
           </Slider>
