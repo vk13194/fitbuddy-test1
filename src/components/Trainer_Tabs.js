@@ -116,7 +116,122 @@ export default function Trainer_Tabs() {
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <div className="myworkout" style={{
+         
+        }}>
+          <div  style={{
+            display: 'flex',
+            justifyContent:'space-between',
+            alignItems:'center',
+            padding: '5px'
+          }}>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              fontWeight:"bold",
+              cursor: "pointer"
+            }}>strength</span>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              fontWeight:"bold",
+              cursor: "pointer"
+            }}>yoga</span>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              fontWeight:"bold",
+              cursor: "pointer"
+            }}>zumba</span>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              fontWeight:"bold",
+              cursor: "pointer"
+            }}>aerobic</span>
+          </div>
+          <div className="two"  style={{
+            display: 'flex',
+            justifyContent:'space-between',
+            alignItems:'center',
+            marginTop: '15px' }}>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '20%'
+            }}> <input type="text" placeholder="core area" style={{border:'none',outline:'none'}} /> </span>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '20%'
+            }}><input type="text" placeholder="excersize" style={{border:'none',outline:'none'}} /></span>
+            <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '100px'
+            }}><input type="text" placeholder="muscle workout" style={{border:'none',outline:'none'}} /></span>
+          </div>
+          <div className="three" style={{
+            marginTop:'10px'
+          }}>
+           <textarea name="benifits" id="" cols="30" rows="5"></textarea>
+          </div>
+          <div className="four"  style={{
+            display: 'flex',
+            justifyContent:'space-between',
+            alignItems:'center',
+            padding: '5px'
+          }}>
+          <span style={{
+              border: '1px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '20%'
+            }}> <input type="text" placeholder="user level" style={{border:'none',outline:'none'}} /> </span>
+            <span style={{
+              border: '2px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '20%'
+            }}><input type="text" placeholder="rep count" style={{border:'none',outline:'none'}} /></span>
+            <span style={{
+              border: '2px solid black',
+              borderRadius: '10px',
+              paddingRight:2,
+              paddingLeft:4,
+              width: '100px'
+            }}><input type="text" placeholder="time" style={{border:'none',outline:'none'}} /></span>
+          </div>
+          <div className="five" style={{
+            display: "flex",
+            justifyContent:'center',
+            alignItems:'center'
+          }}>
+            <button style={{
+              backgroundColor:'black',
+              color: "white",
+              border: "none",
+              outline: "none"
+            }}>submit</button>
+          </div>
+        </div>
+
       </TabPanel>
     </div>
   );

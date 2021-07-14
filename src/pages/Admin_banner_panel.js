@@ -65,7 +65,6 @@ export default function Admin_banner_panel() {
          <button type="submit">submit</button>
        </form>
        </div> 
-     
     </>
   );
  

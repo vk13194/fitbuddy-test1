@@ -19,7 +19,7 @@ export default function About(){
               <img
                 onClick={()=>history.push("/")}
                 className={home.nav_logo}
-                src="/assets/logo.png"
+                src="/assets/newlogowhite1.png"
                 alt="Fitbuddy"
               />
             </div>

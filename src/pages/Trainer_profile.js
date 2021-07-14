@@ -14,6 +14,7 @@ import {Link} from 'react-router-dom';
 export default function Trainer_profile() {
   const history=useHistory();
   console.log(sessionStorage.getItem('email'));
+  let exp=0;
   fetch('https://api.fitbuddy.co.in/TrainerLogin/', {
     method: 'POST',
     headers: {
@@ -35,6 +36,9 @@ export default function Trainer_profile() {
               document.getElementById("trainer_name").innerHTML=responseJson.data[0].name;
               document.getElementById("trainer_image").src=responseJson.data[0].photo;
               document.getElementById("bio").innerHTML=responseJson.data[0].description;
+              console.log(JSON.parse(responseJson.data[0].experience));
+              exp=(JSON.parse(responseJson.data[0].experience)).yoga;
+              console.log(exp);
             }
             else if(responseJson.status="404"){
               console.error("Some Error")
@@ -111,7 +115,7 @@ export default function Trainer_profile() {
               <p id="bio" className="about-text">
                 Physical fitness is a state of health and well-being and, more
                 specifically, the ability to perform aspects of sports,
-                occupations and daily activites.
+                occupations and daily activites. 
               </p>
             </TextInfo>
             <div className="seperator" />

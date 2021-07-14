@@ -141,6 +141,17 @@ const Container = styled.div`
     display: flex;
     align-items: center;
   }
+  .companytag{
+    margin: 1rem 0;
+    width: 18rem !important;
+    padding: 0.8rem 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    border: 2px solid #4a4a4a;
+    border-radius: 50px;
+    outline: none;
+  }
   .continue {
     margin: 1rem 0;
     padding: 0.4rem 1.5rem;

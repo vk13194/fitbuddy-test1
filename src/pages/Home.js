@@ -522,7 +522,7 @@ const [isuser,setisuser]=useState(true);
         <div className={home.ctr1}>
           <img
             className={home.nav_logo_mobile}
-            src="/assets/logo.png"
+            src="/assets/newlogoblack.png"
             alt="Fitbuddy"
           />
           <FiMenu
@@ -554,7 +554,7 @@ const [isuser,setisuser]=useState(true);
             <div>
               <img
                 className={home.nav_logo}
-                src="/assets/logo.png"
+                src="/assets/newlogoblack.png"
                 alt="Fitbuddy"
               />
             </div>
@@ -584,7 +584,7 @@ const [isuser,setisuser]=useState(true);
 
 
 
-          <Slider
+          {/* <Slider
             className={home.carousal}
             dotsClass="carousel-dots"
             dots
@@ -595,7 +595,27 @@ const [isuser,setisuser]=useState(true);
             <div className={home.carousel_image1} ></div>
             <div className={home.carousel_image2}></div>
             <div className={home.carousel_image3}></div>
-          </Slider>
+          </Slider> */}
+          <div className="sliderhere" 
+          style={{
+            backgroundColor:"white",
+            color: 'black',
+            height: "100%",
+            width: "100%",
+            display: 'flex',
+            justifyContent:'center',
+            alignItems: 'center',
+          }}
+          >
+           <div className="carosimg" >
+           <img src="https://api.fitbuddy.co.in/image/1_new.jpg" alt="image"  style={{
+             height: "100%",
+             width: '100%'
+           }} />
+           </div>
+           
+            
+          </div>
 
 
 
@@ -629,7 +649,6 @@ const [isuser,setisuser]=useState(true);
             </button>
           </div>
           <div className={home.trial_ctr}>
-            <p>7 DAYS FREE TRIAL</p>
             <div className={home.trial_inp}>
               <AiOutlineMessage color="grey" />
               <input id="email" onChange={(event)=> {loginEmail =(event.target.value)}} type="text" placeholder="Email or Mobile number" required/>
@@ -653,7 +672,8 @@ const [isuser,setisuser]=useState(true);
               />
               <FaTwitterSquare className={home.trial_media} color="#2a9bce" />
             </div>
-          </div><br></br><br></br>
+          </div>
+          <br></br><br></br>
           <Slider
             className={home.carousal2}
             dotsClass="carousel-dots"

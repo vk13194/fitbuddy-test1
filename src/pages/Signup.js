@@ -85,15 +85,14 @@ const togglePop2 = () => {
         Let's Begin Your
         <div style={{ display: "flex" }}>
           <p style={{ textShadow: "4px 4px 4px #0000004A" }}>FITBUDDY&nbsp;</p>
-          Journey1
+          Journey
         </div>
       </p>
-      <img className="img_dec" src="/assets/login_img.png" alt="" style={{
+      <img className="img_dec" src="/assets/trainerloginnew.jpeg" alt="" style={{
         marginBottom: '-5px',
         height: '400px',
         width: '500px',
-        marginLeft:'200px',
-        backgroundColor:'black'
+        marginLeft:'200px'
       }} />
       <div className="form_sec">
         <form className="form_ctr" onSubmit={(event) => nextStep(event)}>
@@ -106,11 +105,19 @@ const togglePop2 = () => {
               type="text" //previously type="email"
               placeholder="Email or mobile number"
               required
-            ></input>
+           style={{
+            //  backgroundColor:'black',
+            //  color: 'white'
+           }}  ></input>
           </div>
           <div className="input_ctr">
             <RiLockPasswordLine color="#4a4a4a" />
-            <input id="password" onChange={(event)=> {sessionStorage.setItem("password",event.target.value);}} type="password" placeholder="password" required></input>
+            <input id="password" onChange={(event)=> {sessionStorage.setItem("password",event.target.value);}} type="password" placeholder="password" required 
+             style={{
+              // backgroundColor:'black',
+              // color: 'white'
+            }} 
+            ></input>
           </div>
         
           <button className="continue" onClick={CheckLogin} type="button">

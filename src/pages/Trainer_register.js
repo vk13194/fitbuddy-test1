@@ -8,6 +8,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import Policiesfooter from "./Policiesfooter";
 import extra from "./styles/extra.css";
 import Navbar from "./Navbar";
+import {SiManjaro} from  "react-icons/si";
 import {
   AiOutlineDown,
   AiFillGoogleCircle,
@@ -107,19 +108,27 @@ const togglePop2 = () => {
         Let's Begin Your
         <div style={{ display: "flex" }}>
           <p style={{ textShadow: "4px 4px 4px #0000004A" }}>FITBUDDY&nbsp;</p>
-          Journey1
+          Journey
         </div>
       </p>
-      <img className="img_dec" src="/assets/login_img.png" alt="" style={{
+      <img className="img_dec" src="/assets/trainerlogin.svg" alt="" style={{
         marginBottom: '-5px',
         height: '400px',
         width: '500px',
-        marginLeft:'200px',
-        backgroundColor:'black'
+        marginLeft:'200px'
       }} />
       <div className="form_sec">
+        
+  
         <form className="form_ctr" onSubmit={(event) => nextStep(event)}>
           <img className="logo" src="/assets/logo.png" />
+         <div className="indiorcomp" >
+        <select id="indiorcompany" name="companytype" className="companytag">
+          <option value={0}>individual or company</option>
+    <option value={1} >individual</option>
+    <option value={2}>company</option>
+  </select>
+         </div>
           <div className="input_ctr">
             <BsChatSquareDots color="#4a4a4a" />
             <input

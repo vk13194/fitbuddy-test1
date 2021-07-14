@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import * as blobUtil from 'blob-util';
+import './styles/Trainerdetails.css';
 import {
   HiOutlineArrowNarrowLeft,
   HiOutlineArrowNarrowRight,
@@ -75,6 +76,7 @@ function addExperienceRow(event){
   outerspan.appendChild(label);
   document.getElementById("outerDiv").appendChild(outerspan);
   document.getElementById("outerDiv").appendChild(backupLabel);
+  console.log(experience);
 }
 function encodeImageFileAsURL(element) {
   var file = element.files[0];
@@ -178,7 +180,8 @@ weight=document.getElementById("weight").value;
 height=document.getElementById("height").value;
 experience=sessionStorage.getItem("experience");
 bio=document.getElementById("bio").value;
-
+experience = experience + "}";
+console.log(experience);
 fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   method: 'POST',
   headers: {
@@ -200,7 +203,8 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   'weight':weight,
   'description': bio,
   'photo':photo,
-   "city": city
+   "city": city,
+   "experience":JSON.stringify({experience})
   })
 }).then((response) => response.json())
 .then((responseJson) => {
@@ -281,11 +285,17 @@ const handleOpen = () => {
           <MenuItem value={'Mumbai'}>Mumbai</MenuItem>
           <MenuItem value={'Delhi'}>delhi</MenuItem>
           <MenuItem value={'Kolkata'}>Kolkata</MenuItem>
+          <MenuItem value={'Kolkata'}>Pune</MenuItem>
+          <MenuItem value={'Banglore'}>Banglore</MenuItem>
+          <MenuItem value={'Chennai'}>Chennai</MenuItem>
         </Select>
       </FormControl>
-
+            <div style={{
+              // marginRight:'200px'
+            }}>
             <p>Mobile Number</p>
             <input id="mobileno" onChange={(event)=>{phoneNumber=event.target.value}} type="text" placeholder="+91 7800000000" />
+            </div>
           </div>
         </div>
       </TextInputs>
@@ -329,9 +339,13 @@ const handleOpen = () => {
               </label>
             </div>
           </div>
+          {/* <button onClick={()=>{console.log(experience + "}")}}>clik me </button> */}
           <label className="label_txtarea">
             <p>Add. Bio. (150-300 words)</p>
-            <textarea id="bio" onChange={(event)=>{bio=event.target.value}} placeholder="“A certified fitness professional specializing in personal training and weight loss and serves clients in the greater Dallas area. He is accredited with the American Council of Exercise and the National Academy of Sports Medicine.”" />
+            <textarea id="bio" onChange={(event)=>{bio=event.target.value}} placeholder="“A certified fitness professional specializing in personal training and weight loss and serves clients in the greater Dallas area. He is accredited with the American Council of Exercise and the National Academy of Sports Medicine.”" 
+          style={{
+            width: "800px"
+          }} />
           </label>
         </div>
         <div className="bottom_left_ctr">
@@ -358,3 +372,23 @@ const handleOpen = () => {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
