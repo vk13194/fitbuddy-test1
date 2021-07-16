@@ -10,6 +10,8 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Navbar from "./Navbar";
+import { useSelector, useDispatch } from "react-redux";
+
 function checkStatus(data)
 {
   console.log(data);
@@ -17,9 +19,22 @@ function checkStatus(data)
   console.log(data.age);
 }
 export default function User_profile() {
-  let history=useHistory();
-  console.log("Ran");
-  fetch('https://api.fitbuddy.co.in/login/', {
+  const history=useHistory();
+  const dispatch=useDispatch();
+   const {auth} =useSelector(state=>({...state}))
+    
+    console.log('authhhhhhhhhhhh', auth)
+    console.log('authhhhhhhhhhhh', auth.name)
+    function logout(){
+    dispatch({
+      type:"LOGOUT_TRAINER",
+      payload:null
+    })
+    window.localStorage.removeItem("auth")
+    history.push("/");
+  }
+  
+  /*fetch('https://api.fitbuddy.co.in/login/', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -44,7 +59,7 @@ export default function User_profile() {
         }).catch((error) => {
           console.error(error);
         });
-  
+   */
   return (
     <div>
       <Navbar/>
@@ -57,7 +72,7 @@ export default function User_profile() {
             className="profile"
           />
           <div>
-            <p id="user_name" className="name">User Name</p>
+            <p id="user_name" className="name">{ auth !== null &&  auth[0].name }</p>
           </div>
           <div className="options">
             <p>
@@ -76,7 +91,7 @@ export default function User_profile() {
               <BsPlus className="icon" /> Session Details
             </p>
           </div>
-          <p onClick={()=>{localStorage.removeItem("token"); history.replace("/")}} className="logoutbtn">
+          <p onClick={()=>logout()} className="logoutbtn">
             <BiDumbbell className="logout-ico" />
             Log out
           </p>

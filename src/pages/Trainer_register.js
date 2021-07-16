@@ -15,7 +15,7 @@ import {
   AiFillTwitterCircle,
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
-
+import {useDispatch} from 'react-redux'
 export default function Trainer_register() {
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
@@ -23,6 +23,7 @@ export default function Trainer_register() {
   const [rendermenu, setrendermenu] = useState(false);
   const [seen, setSeen]= useState(false);
   const [seen2, setSeen2] =useState(false);
+  const dispatch=useDispatch()
   const getStatus=(data)=>{
     if(data.status=="404"){
       history.push("/signup/trainer");
@@ -65,11 +66,15 @@ const CheckLogin = () => {
   })
   }).then((response) => response.json())
       .then((responseJson) => {
-        sessionStorage.setItem("email",document.getElementById("email").value);
-        sessionStorage.setItem("password",document.getElementById("password").value);
-        console.log(responseJson);
+       // sessionStorage.setItem("email",document.getElementById("email").value);
+        //sessionStorage.setItem("password",document.getElementById("password").value);
+       // console.log('resssssspons',responseJson.data);
+       // window.localStorage.setItem("auth", JSON.stringify(responseJson.data));
+       // dispatch({ type: "LOGIN_TRAINER", payload: responseJson.data });
           if(responseJson.Message=="Login Successfully")
           {
+         window.localStorage.setItem("auth", JSON.stringify(responseJson.data));
+        dispatch({ type: "LOGIN_TRAINER", payload: responseJson.data });
           history.push("/trainer/profile");
           }
           else if(responseJson.status="404"){

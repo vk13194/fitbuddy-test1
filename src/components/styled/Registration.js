@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 const TextInputs = styled.div`
-  width: 100vw;
+  width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x:hident;
+
   .head {
     margin-top: 2rem;
     justify-content: space-between;
@@ -26,6 +28,7 @@ const TextInputs = styled.div`
     padding: 0 8rem;
     margin-top: 2rem;
     text-align: left;
+    
   }
   .details p {
     font-family: Font_smedium;

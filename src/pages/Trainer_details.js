@@ -20,6 +20,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { withStyles, makeStyles } from "@material-ui/core/styles";
+import axios from 'axios'
+import {useDispatch} from 'react-redux'
 const useStyles = makeStyles((theme) => ({
   button: {
     display: 'block',
@@ -40,19 +42,33 @@ export default function Trainer_details() {
   let height="";
   let weight="";
   let bio="";
-  let experience='{';
+  let experience='';
   let history=useHistory();
   const classes = useStyles();
   const [city,setcity]=useState("Mumbai")
   const handleChange = (event) => {
     setcity(event.target.value);
     console.log(city);
-  };
-function addExperienceRow(event){
+  }
+  const dispatch =useDispatch()
+const addExperienceRow= async(event)=>{
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
   var exp=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
-  console.log(session);
-  console.log(exp);
+  
+  if(session==='Yoga' ){
+    session=1
+  }
+  if(session==='Aerobics' ){
+    session=2
+  }
+  if(session==='Weight loss' ){
+    session=3
+  }
+let userid=sessionStorage.getItem("email")
+const res = await axios.post('http://api.fitbuddy.co.in/Experience/',{exerciseid:session,experience:exp,trainer_id:userid})
+console.log('ressssss',res)
+  console.log('sseeonjhfruf',session);
+  console.log('ygdygeyfefegfus',exp);
   var expRow=session +":"+exp+',';
   experience=experience+expRow;
   sessionStorage.setItem("experience",experience);
@@ -212,6 +228,8 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   //setTobecollected(responseJson.Message);
   if(responseJson.status=="200")
     {
+      window.localStorage.setItem("auth", JSON.stringify(responseJson.data));
+      dispatch({ type: "LOGIN_TRAINER", payload: responseJson.data });
       console.log('trainerloginstatus',responseJson.status);
       console.log(responseJson.data);
       history.push("/trainer/profile");
@@ -269,27 +287,7 @@ const handleOpen = () => {
             <input id="city_country_input" onChange={(event)=>{
               country=event.target.value
             }}type="text" placeholder="India" />
-             <p>CITY</p>
-            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">{city}</InputLabel>
-        <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={age}
-          onChange={handleChange}
-        >
-
-          <MenuItem value={'Mumbai'}>Mumbai</MenuItem>
-          <MenuItem value={'Delhi'}>delhi</MenuItem>
-          <MenuItem value={'Kolkata'}>Kolkata</MenuItem>
-          <MenuItem value={'Kolkata'}>Pune</MenuItem>
-          <MenuItem value={'Banglore'}>Banglore</MenuItem>
-          <MenuItem value={'Chennai'}>Chennai</MenuItem>
-        </Select>
-      </FormControl>
+            
             <div style={{
               // marginRight:'200px'
             }}>
@@ -372,7 +370,6 @@ const handleOpen = () => {
     </>
   );
 }
-
 
 
 

@@ -14,7 +14,6 @@ import {
   AiFillTwitterCircle,
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
-
 export default function Signup() {
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
@@ -49,6 +48,7 @@ const CheckLogin = () => {
         console.log(responseJson);
           if(responseJson.Message=="Login Successfully")
           {
+           
           history.push("/user_profile");
           }
           else if(responseJson.status="404"){
