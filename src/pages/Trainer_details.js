@@ -66,7 +66,7 @@ const addExperienceRow= async(event)=>{
     sessionupdated=3
   }
 let userid=sessionStorage.getItem("email")
-const res = await axios.post('http://api.fitbuddy.co.in/Experience/',{exerciseid:sessionupdated,experience:exp,trainer_id:userid})
+const res = await axios.post('https://api.fitbuddy.co.in/Experience/',{exerciseid:sessionupdated,experience:exp,trainer_id:userid})
 console.log('ressssss',res)
   console.log('sseeonjhfruf',session);
   console.log('ygdygeyfefegfus',exp);

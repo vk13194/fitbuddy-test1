@@ -500,7 +500,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://3.137.209.222:8000/login/", {
+      const res = await axios.post("https://api.fitbuddy.co.in/login/", {
         userid,
         password,
       });
@@ -514,7 +514,7 @@ export default function Home() {
   };
  useEffect(()=>{
    const fetchData =async()=>{
-     const res = await axios.get('http://3.137.209.222:8000/slider/')
+     const res = await axios.get('https://api.fitbuddy.co.in/slider/')
      setMyData(res.data.data)
     setLoading(false)
    }
