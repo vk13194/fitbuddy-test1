@@ -515,13 +515,11 @@ export default function Home() {
  useEffect(()=>{
    const fetchData =async()=>{
      const res = await axios.get('http://3.137.209.222:8000/slider/')
-     console.log('hhhhhhhhhhhhh',res.data.data)
      setMyData(res.data.data)
     setLoading(false)
    }
    fetchData()
  },[])
- console.log('dddddddddddddddd',myData) 
  console.log(loading)
   return (
     <div className={home.main_ctr}>

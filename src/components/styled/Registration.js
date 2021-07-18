@@ -6,7 +6,7 @@ const TextInputs = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-x:hident;
-
+ justify-content:center;
   .head {
     margin-top: 2rem;
     justify-content: space-between;
@@ -167,7 +167,7 @@ const TickCtr = styled.button`
   cursor: pointer;
   outline: none;
   margin: 0 auto !important;
-
+  
   &:focus {
     background-color: #a2b933;
     color: white;

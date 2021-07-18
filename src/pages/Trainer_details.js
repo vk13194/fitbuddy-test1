@@ -55,17 +55,18 @@ const addExperienceRow= async(event)=>{
   var session=document.getElementById("experienceRow").getElementsByTagName("label")[0].getElementsByTagName("select")[0].value;
   var exp=document.getElementById("experienceRow").getElementsByTagName("label")[1].getElementsByTagName("input")[0].value;
   
+  let sessionupdated
   if(session==='Yoga' ){
-    session=1
+    sessionupdated=1
   }
   if(session==='Aerobics' ){
-    session=2
+    sessionupdated=2
   }
   if(session==='Weight loss' ){
-    session=3
+    sessionupdated=3
   }
 let userid=sessionStorage.getItem("email")
-const res = await axios.post('http://api.fitbuddy.co.in/Experience/',{exerciseid:session,experience:exp,trainer_id:userid})
+const res = await axios.post('http://api.fitbuddy.co.in/Experience/',{exerciseid:sessionupdated,experience:exp,trainer_id:userid})
 console.log('ressssss',res)
   console.log('sseeonjhfruf',session);
   console.log('ygdygeyfefegfus',exp);
@@ -226,6 +227,7 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
 .then((responseJson) => {
   // If server response message same as Data Matched
   //setTobecollected(responseJson.Message);
+  console.log("responseJsonhhhhhhhh",responseJson)
   if(responseJson.status=="200")
     {
       window.localStorage.setItem("auth", JSON.stringify(responseJson.data));
@@ -338,11 +340,13 @@ const handleOpen = () => {
             </div>
           </div>
           {/* <button onClick={()=>{console.log(experience + "}")}}>clik me </button> */}
-          <label className="label_txtarea">
+          <label className="label_txtarea" style={{marginTop:"300px"}}>
             <p>Add. Bio. (150-300 words)</p>
             <textarea id="bio" onChange={(event)=>{bio=event.target.value}} placeholder="“A certified fitness professional specializing in personal training and weight loss and serves clients in the greater Dallas area. He is accredited with the American Council of Exercise and the National Academy of Sports Medicine.”" 
           style={{
-            width: "800px"
+            width: "600px",
+            height:"200px",
+
           }} />
           </label>
         </div>

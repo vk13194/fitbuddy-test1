@@ -13,7 +13,7 @@ const authReducer =(state=trainerState, action)=>{
                  ...state,
                  ...action.payload
              }
-         case "LOGOUT_TRAINER":
+         case LOGOUT_TRAINER:
       return action.payload;
         default:
             return state;
