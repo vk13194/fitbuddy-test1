@@ -22,6 +22,7 @@ import Privacy_policy from "./pages/Privacy_policy";
 import Terms_and_conditions from "./pages/Terms_and_conditions";
 import Policiesfooter from "./pages/Policiesfooter";
 import Trainer_register from "./pages/Trainer_register"
+import Session_time from "./pages/Session_time";
 
 function App() {
  
@@ -58,6 +59,7 @@ function App() {
           <Route exact path="/pricing_details" component={Pricing_details}/>
           <Route exact path="/otp_screen" component={Otp_screen}/>
           <Route exact path="/session_timing" component={Session_timing}/>
+          <Route exact path="/session_time" component={Session_time} />
           <Route exact path="/admin_banner_panel" component={Admin_banner_panel}/>
           <Route exact path="/privacy_policy" component={Privacy_policy}/>
           <Route exact path="/terms_and_conditions" component={Terms_and_conditions}/>

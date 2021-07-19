@@ -117,8 +117,7 @@ else{
   document.getElementById("profile_label").style.backgroundImage="url('')";
 }
 }
-const TrainerReg = () => {
-
+/*const TrainerReg = () => {
   alert("test");
 if(document.getElementById("male_gender_button").className=="gender_selected"){
   gender="Male";
@@ -197,7 +196,7 @@ weight=document.getElementById("weight").value;
 height=document.getElementById("height").value;
 experience=sessionStorage.getItem("experience");
 bio=document.getElementById("bio").value;
-experience = experience + "}";
+//experience = experience + "}";
 console.log(experience);
 fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   method: 'POST',
@@ -221,7 +220,6 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
   'description': bio,
   'photo':photo,
    "city": city,
-   "experience":JSON.stringify({experience})
   })
 }).then((response) => response.json())
 .then((responseJson) => {
@@ -247,7 +245,7 @@ fetch('https://api.fitbuddy.co.in/TrainerReg/', {
 }//else ends here
 document.getElementById("loading_label").style.display="block";
 console.log("out");
-}
+}*/
 const [open, setOpen] = useState(false);
 const handleClose = () => {
   setOpen(false);
@@ -256,6 +254,38 @@ const handleClose = () => {
 const handleOpen = () => {
   setOpen(true);
 };
+
+
+const TrainerReg = async() => {
+  let userid=sessionStorage.getItem("email")
+    let password=sessionStorage.getItem("password")
+    if(document.getElementById("male_gender_button").className=="gender_selected"){
+  gender="Male";
+     }
+    else if(document.getElementById("female_gender_button").className=="gender_selected"){
+     gender="Female";
+     }
+    let name=document.getElementById("name").value;
+    let country=document.getElementById("city_country_input").value;
+let phoneNumber=document.getElementById("mobileno").value;
+let age=document.getElementById("age").value;
+let weight=document.getElementById("weight").value;
+let height=document.getElementById("height").value;
+let bio=document.getElementById("bio").value;
+ const res = await axios.post('https://api.fitbuddy.co.in/TrainerReg/',{userid:userid, 
+   password:password,
+   name:name,
+   country:country,
+   mobileno:phoneNumber,
+   age:age,
+   weight:weight,
+   height:height,
+   bio:bio,
+   gender:gender
+ })
+console.log('respppppppppp',res)
+}
+
   return (
     <>
     <Navbar/>

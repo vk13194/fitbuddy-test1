@@ -10,6 +10,9 @@ export default function Session_timing(){
     const [dayStatus , setDayStatus] = useState(false);
     const [addButtonStatus, setAddButtonStatus] = useState(false);
     const [dayUlList, setDayUlList] = useState("none");
+   
+    console.log('timeStatus', timeStatus, dayUlList, dayUlList)
+
     const sessionDropDownList=[       
         <td colSpan="2" id="firstRowColumn1">      
         <select className={st.exercise_button} onChange={(event)=>SessionChangeHandler(event)} >
