@@ -129,11 +129,11 @@ export default function Admin_panel() {
         </div>
       </div>
       <hr />
-      <div className="sliderheader" style={{textAlign:'center'}} >
-        <h2>--:Change Slider Items:--</h2> 
+      <div className="sliderheader" style={{ textAlign: "center" }}>
+        <h2>--:Change Slider Items:--</h2>
       </div>
       <hr />
-      <Admin_banner_panel/>
+      <Admin_banner_panel />
     </>
   );
 }
