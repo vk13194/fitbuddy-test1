@@ -16,6 +16,7 @@ import {
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import {useDispatch} from 'react-redux'
+import axios from 'axios'
 export default function Trainer_register() {
   let history = useHistory();
   const [istrainer, settrainer] = useState(false);
@@ -78,7 +79,32 @@ const CheckLogin = () => {
           history.push("/trainer/profile");
           }
           else if(responseJson.status="404"){
-            history.push("/signup/trainer");
+
+            fetch('https://api.fitbuddy.co.in/SendSMS/', {
+            method: 'POST',
+            // credentials: 'omit', 
+            headers: {
+           'Accept': 'application/json',
+          'Content-Type': 'application/json'  
+            },
+      // referrerPolicy: 'no-referrer',
+        body: JSON.stringify({  
+      "mobileno":document.getElementById("email").value,
+    })
+  }).then((response) => response.json()).then((res)=>{
+     
+     if(res.status ==200){
+       sessionStorage.setItem("email",document.getElementById("email").value);
+      sessionStorage.setItem("password",document.getElementById("password").value);
+       sessionStorage.setItem("otp",res.OTP);
+           // history.push("/signup/trainer");
+           history.push("/otp_screen");
+     }
+
+    })
+         
+           // history.push("/signup/trainer");
+           //history.push("/otp_screen");
           }
       }).catch((error) => {
         // alert(error);
@@ -128,11 +154,11 @@ const togglePop2 = () => {
         <form className="form_ctr" onSubmit={(event) => nextStep(event)}>
           <img className="logo" src="/assets/logo.png" />
          <div className="indiorcomp" >
-        <select id="indiorcompany" name="companytype" className="companytag">
+       {/* <select id="indiorcompany" name="companytype" className="companytag">
           <option value={0}>individual or company</option>
     <option value={1} >individual</option>
     <option value={2}>company</option>
-  </select>
+  </select> */}
          </div>
           <div className="input_ctr">
             <BsChatSquareDots color="#4a4a4a" />
